@@ -23,7 +23,7 @@ public class PersonneController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody Personne userRequest) {
         Optional<Personne> existingUser = personneService.findByEmail(userRequest.getEmail());
         if (existingUser.isPresent()) {

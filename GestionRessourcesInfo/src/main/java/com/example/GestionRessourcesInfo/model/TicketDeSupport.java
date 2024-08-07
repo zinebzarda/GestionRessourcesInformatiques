@@ -3,7 +3,6 @@ package com.example.GestionRessourcesInfo.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -13,35 +12,31 @@ import java.util.Date;
 @Entity
 @Table(name = "tickets_de_support")
 public class TicketDeSupport {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String description;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private EtatTicket etat;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
     private Date dateCreation;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateResolution;
-
-    @ManyToOne
-    @JoinColumn(name = "utilisateur_id", nullable = false)
-    private Utilisateur creePar;
-
+    @PrePersist
+    protected void onCreate() {
+        this.dateCreation = new Date();
+    }
     @ManyToOne
     @JoinColumn(name = "technicien_id")
-    private TechnicienIT assigneA;
+    private TechnicienIT technicien;
+    @Enumerated(EnumType.STRING)
+    private EtatTicket etatTicket;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "equipment_id")
+    private Equipement equipment;
     @ManyToOne
     @JoinColumn(name = "panne_id")
     private Panne panne;
 
 }
+

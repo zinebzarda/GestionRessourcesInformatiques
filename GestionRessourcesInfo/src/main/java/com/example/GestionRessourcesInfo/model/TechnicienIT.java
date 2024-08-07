@@ -9,14 +9,20 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "techniciens_it")
+@Table(name = "Technicien")
+@PrimaryKeyJoinColumn(name = "id")
 public class TechnicienIT extends Personne {
-
-    @Column(nullable = false)
+    @Column(name = "specialite")
     private String specialite;
 
-
+    @Override
+    public String getRole() {
+        return "ROLE_TECHNICIEN";
+    }
+    public TechnicienIT() {
+        super();
+        this.setRole("ROLE_TECHNICIEN");
+    }
 
 }

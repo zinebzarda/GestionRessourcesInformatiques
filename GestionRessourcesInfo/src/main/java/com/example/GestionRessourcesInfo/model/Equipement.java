@@ -6,27 +6,34 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "equipements")
 public class Equipement {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String nom;
-
-    @Column(nullable = false)
-    private String description;
+    private String type;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private EtatEquipement etat;
+    private EtatEquipement etatEquipement;
 
-    @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
-    private Date dateAcquisition;
+    @OneToMany(mappedBy = "equipment")
+    private List<PanneEquipment> panneEquipments;
 
+    @OneToMany(mappedBy = "equipment")
+    private List<TicketDeSupport> tickets;
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

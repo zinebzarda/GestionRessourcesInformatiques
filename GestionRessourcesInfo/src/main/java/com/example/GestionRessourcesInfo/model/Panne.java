@@ -3,7 +3,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,22 +14,19 @@ import java.util.Date;
 @Entity
 @Table(name = "pannes")
 public class Panne {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String description;
+    private LocalDateTime datePanne;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date datePanne;
+    @Enumerated(EnumType.STRING)
+    private EtatPanne etatPanne;
 
-    @Column(nullable = false)
-    private Boolean resolu;
-
+    @OneToMany(mappedBy = "panne")
+    private List<PanneEquipment> panneEquipments;
     @ManyToOne
-    @JoinColumn(name = "equipement_id", nullable = false)
-    private Equipement equipement;
+    @JoinColumn(name = "equipment_id")
+    private Equipement equipment;
+
 }

@@ -18,28 +18,27 @@ public class RapportController {
 
     @PostMapping
     public ResponseEntity<Rapport> creerRapport(@RequestBody Rapport rapport) {
-        return ResponseEntity.ok(rapportService.creerRapport(rapport));
+        Rapport createdRapport = rapportService.creerRapport(rapport);
+        return ResponseEntity.ok(createdRapport);
     }
 
     @GetMapping
     public ResponseEntity<List<Rapport>> getAllRapports() {
-        return ResponseEntity.ok(rapportService.getAllRapports());
+        List<Rapport> rapports = rapportService.getAllRapports();
+        return ResponseEntity.ok(rapports);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Rapport> getRapportById(@PathVariable Long id) {
         Rapport rapport = rapportService.getRapportById(id);
-        if (rapport != null) {
-            return ResponseEntity.ok(rapport);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(rapport);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Rapport> updateRapport(@PathVariable Long id, @RequestBody Rapport rapport) {
         rapport.setId(id);
-        return ResponseEntity.ok(rapportService.updateRapport(rapport));
+        Rapport updatedRapport = rapportService.updateRapport(rapport);
+        return ResponseEntity.ok(updatedRapport);
     }
 
     @DeleteMapping("/{id}")

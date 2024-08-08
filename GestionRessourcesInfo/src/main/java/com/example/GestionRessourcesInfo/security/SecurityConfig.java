@@ -11,7 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
+import static org.springframework.http.HttpMethod.DELETE;
 
 @Configuration
 @EnableWebSecurity
@@ -32,25 +33,28 @@ public class SecurityConfig  {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        System.out.println("filtercjain///////////");
-
-        http
-                .csrf(csrf -> csrf.disable())
+        http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
-
                                 .requestMatchers("/auth").permitAll()
-                                .requestMatchers(POST, "/api/equipements/**").hasRole("ADMIN")
-//                                .requestMatchers("/admin/**").hasRole("ADMIN")
-//                                .requestMatchers("/user/**").hasRole("USER")
-//                                .requestMatchers("/technician/**").hasRole("TECHNICIAN")
-                                .anyRequest().authenticated()
+                                .requestMatchers("/api/equipements/**").hasRole("ADMIN")
 
+                                .requestMatchers(GET, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN", "USER")
+                                .requestMatchers(POST, "/api/tickets").hasRole("USER")
+                                .requestMatchers(PUT, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN")
+                                .requestMatchers(DELETE, "/api/tickets/**").hasRole("ADMIN")
+
+                                .requestMatchers(POST, "/api/tickets").hasRole("USER")
+                                .requestMatchers("/api/utilisateurs/**").hasRole("ADMIN")
+                                .requestMatchers("/api/notifications/**").hasRole("ADMIN")
+                                .requestMatchers("/api/pannes/**").hasRole("ADMIN")
+                                .anyRequest().authenticated()
                 )
-                .formLogin(formLogin ->formLogin.disable());
-        http.addFilterBefore(new JwtAuthorizationFilter((customUserDetailsService)), UsernamePasswordAuthenticationFilter.class);
+                .formLogin(formLogin -> formLogin.disable());
+        http.addFilterBefore(new JwtAuthorizationFilter(customUserDetailsService), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {

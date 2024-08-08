@@ -17,28 +17,27 @@ public class PanneController {
 
     @PostMapping
     public ResponseEntity<Panne> creerPanne(@RequestBody Panne panne) {
-        return ResponseEntity.ok(panneService.creerPanne(panne));
+        Panne createdPanne = panneService.creerPanne(panne);
+        return ResponseEntity.ok(createdPanne);
     }
 
     @GetMapping
     public ResponseEntity<List<Panne>> getAllPannes() {
-        return ResponseEntity.ok(panneService.getAllPannes());
+        List<Panne> pannes = panneService.getAllPannes();
+        return ResponseEntity.ok(pannes);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Panne> getPanneById(@PathVariable Long id) {
         Panne panne = panneService.getPanneById(id);
-        if (panne != null) {
-            return ResponseEntity.ok(panne);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(panne);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Panne> updatePanne(@PathVariable Long id, @RequestBody Panne panne) {
         panne.setId(id);
-        return ResponseEntity.ok(panneService.updatePanne(panne));
+        Panne updatedPanne = panneService.updatePanne(panne);
+        return ResponseEntity.ok(updatedPanne);
     }
 
     @DeleteMapping("/{id}")

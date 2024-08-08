@@ -18,28 +18,27 @@ public class TechnicienITController {
 
     @PostMapping
     public ResponseEntity<TechnicienIT> creerTechnicienIT(@RequestBody TechnicienIT technicienIT) {
-        return ResponseEntity.ok(technicienITService.creerTechnicienIT(technicienIT));
+        TechnicienIT createdTechnicien = technicienITService.creerTechnicienIT(technicienIT);
+        return ResponseEntity.ok(createdTechnicien);
     }
 
     @GetMapping
     public ResponseEntity<List<TechnicienIT>> getAllTechnicienITs() {
-        return ResponseEntity.ok(technicienITService.getAllTechnicienITs());
+        List<TechnicienIT> techniciens = technicienITService.getAllTechnicienITs();
+        return ResponseEntity.ok(techniciens);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TechnicienIT> getTechnicienITById(@PathVariable Long id) {
-        TechnicienIT technicienIT = technicienITService.getTechnicienITById(id);
-        if (technicienIT != null) {
-            return ResponseEntity.ok(technicienIT);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        TechnicienIT technicien = technicienITService.getTechnicienITById(id);
+        return ResponseEntity.ok(technicien);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<TechnicienIT> updateTechnicienIT(@PathVariable Long id, @RequestBody TechnicienIT technicienIT) {
         technicienIT.setId(id);
-        return ResponseEntity.ok(technicienITService.updateTechnicienIT(technicienIT));
+        TechnicienIT updatedTechnicien = technicienITService.updateTechnicienIT(technicienIT);
+        return ResponseEntity.ok(updatedTechnicien);
     }
 
     @DeleteMapping("/{id}")

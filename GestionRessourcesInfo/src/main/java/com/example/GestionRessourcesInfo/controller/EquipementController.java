@@ -17,28 +17,27 @@ public class EquipementController {
 
     @PostMapping
     public ResponseEntity<Equipement> creerEquipement(@RequestBody Equipement equipement) {
-        return ResponseEntity.ok(equipementService.creerEquipement(equipement));
+        Equipement createdEquipement = equipementService.creerEquipement(equipement);
+        return ResponseEntity.ok(createdEquipement);
     }
 
     @GetMapping
     public ResponseEntity<List<Equipement>> getAllEquipements() {
-        return ResponseEntity.ok(equipementService.getAllEquipements());
+        List<Equipement> equipements = equipementService.getAllEquipements();
+        return ResponseEntity.ok(equipements);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Equipement> getEquipementById(@PathVariable Long id) {
         Equipement equipement = equipementService.getEquipementById(id);
-        if (equipement != null) {
-            return ResponseEntity.ok(equipement);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(equipement);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Equipement> updateEquipement(@PathVariable Long id, @RequestBody Equipement equipement) {
         equipement.setId(id);
-        return ResponseEntity.ok(equipementService.updateEquipement(equipement));
+        Equipement updatedEquipement = equipementService.updateEquipement(equipement);
+        return ResponseEntity.ok(updatedEquipement);
     }
 
     @DeleteMapping("/{id}")

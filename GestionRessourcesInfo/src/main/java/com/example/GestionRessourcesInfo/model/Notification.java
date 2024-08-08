@@ -21,7 +21,7 @@ public class Notification {
     private boolean lu;
 
     @ManyToOne
-    private AdministrateurIT administrateur;
-
+    @JoinColumn(name = "admin_id")
+    private AdministrateurIT admin;
 
 }

@@ -23,16 +23,16 @@ public class TicketDeSupport {
     private EtatTicket etat;
     private Date dateCreation;
     private Date dateResolution;
-
     @ManyToOne
+    @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
 
     @ManyToOne
-    private TechnicienIT technicien;
+    @JoinColumn(name = "technicien_id")
+    private TechnicienIT technicienIT;
 
     @ManyToOne
+    @JoinColumn(name = "panne_id")
     private Panne panne;
-
-
 }
 

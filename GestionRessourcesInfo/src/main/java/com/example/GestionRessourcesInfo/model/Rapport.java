@@ -23,4 +23,12 @@ public class Rapport {
     @Lob
     private String contenu;
 
+    @ManyToOne
+    @JoinColumn(name = "administrateurIT_id")
+    private AdministrateurIT administrateurIT;
+
+    @ManyToOne
+    @JoinColumn(name = "technicienIT_id")
+    private TechnicienIT technicienIT;
+
 }

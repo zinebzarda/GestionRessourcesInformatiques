@@ -17,28 +17,27 @@ public class TicketDeSupportController {
 
     @PostMapping
     public ResponseEntity<TicketDeSupport> creerTicketDeSupport(@RequestBody TicketDeSupport ticketDeSupport) {
-        return ResponseEntity.ok(ticketDeSupportService.creerTicketDeSupport(ticketDeSupport));
+        TicketDeSupport createdTicket = ticketDeSupportService.creerTicketDeSupport(ticketDeSupport);
+        return ResponseEntity.ok(createdTicket);
     }
 
     @GetMapping
     public ResponseEntity<List<TicketDeSupport>> getAllTicketsDeSupport() {
-        return ResponseEntity.ok(ticketDeSupportService.getAllTicketsDeSupport());
+        List<TicketDeSupport> tickets = ticketDeSupportService.getAllTicketsDeSupport();
+        return ResponseEntity.ok(tickets);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TicketDeSupport> getTicketDeSupportById(@PathVariable Long id) {
-        TicketDeSupport ticketDeSupport = ticketDeSupportService.getTicketDeSupportById(id);
-        if (ticketDeSupport != null) {
-            return ResponseEntity.ok(ticketDeSupport);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        TicketDeSupport ticket = ticketDeSupportService.getTicketDeSupportById(id);
+        return ResponseEntity.ok(ticket);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<TicketDeSupport> updateTicketDeSupport(@PathVariable Long id, @RequestBody TicketDeSupport ticketDeSupport) {
         ticketDeSupport.setId(id);
-        return ResponseEntity.ok(ticketDeSupportService.updateTicketDeSupport(ticketDeSupport));
+        TicketDeSupport updatedTicket = ticketDeSupportService.updateTicketDeSupport(ticketDeSupport);
+        return ResponseEntity.ok(updatedTicket);
     }
 
     @DeleteMapping("/{id}")

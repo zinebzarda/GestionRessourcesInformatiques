@@ -17,33 +17,33 @@ public class NotificationController {
 
     @PostMapping
     public ResponseEntity<Notification> creerNotification(@RequestBody Notification notification) {
-        return ResponseEntity.ok(notificationService.creerNotification(notification));
+        Notification createdNotification = notificationService.creerNotification(notification);
+        return ResponseEntity.ok(createdNotification);
     }
 
     @GetMapping
     public ResponseEntity<List<Notification>> getAllNotifications() {
-        return ResponseEntity.ok(notificationService.getAllNotifications());
+        List<Notification> notifications = notificationService.getAllNotifications();
+        return ResponseEntity.ok(notifications);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Notification> getNotificationById(@PathVariable Long id) {
         Notification notification = notificationService.getNotificationById(id);
-        if (notification != null) {
-            return ResponseEntity.ok(notification);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(notification);
     }
 
-    @GetMapping("/unread/{adminId}")
+    @GetMapping("/admin/{adminId}/unread")
     public ResponseEntity<List<Notification>> getUnreadNotificationsForAdmin(@PathVariable Long adminId) {
-        return ResponseEntity.ok(notificationService.getUnreadNotificationsForAdmin(adminId));
+        List<Notification> notifications = notificationService.getUnreadNotificationsForAdmin(adminId);
+        return ResponseEntity.ok(notifications);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Notification> updateNotification(@PathVariable Long id, @RequestBody Notification notification) {
         notification.setId(id);
-        return ResponseEntity.ok(notificationService.updateNotification(notification));
+        Notification updatedNotification = notificationService.updateNotification(notification);
+        return ResponseEntity.ok(updatedNotification);
     }
 
     @DeleteMapping("/{id}")

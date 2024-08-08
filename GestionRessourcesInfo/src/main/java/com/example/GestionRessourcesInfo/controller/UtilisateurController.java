@@ -1,11 +1,12 @@
 package com.example.GestionRessourcesInfo.controller;
 
-import com.example.GestionRessourcesInfo.service.CustomUserDetailsService;
+import com.example.GestionRessourcesInfo.dto.UtilisateurDTO;
 import com.example.GestionRessourcesInfo.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/utilisateurs")
@@ -13,23 +14,16 @@ public class UtilisateurController {
 
     @Autowired
     private UtilisateurService utilisateurService;
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+    @PostMapping
+    public ResponseEntity<UtilisateurDTO> creerUtilisateur(@RequestBody UtilisateurDTO utilisateurDTO) {
+        UtilisateurDTO createdUtilisateur = utilisateurService.creerUtilisateur(utilisateurDTO);
+        return ResponseEntity.ok(createdUtilisateur);
+    }
 
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
-
-//
-//    @PostMapping
-//    public ResponseEntity<UtilisateurDTO> creerUtilisateur(@RequestBody UtilisateurDTO utilisateurDTO) {
-//        return ResponseEntity.ok(utilisateurService.creerUtilisateur(utilisateurDTO));
-//    }
-
-//    @GetMapping
-//    public ResponseEntity<List<UtilisateurDTO>> getAllUtilisateurs() {
-//        return ResponseEntity.ok(utilisateurService.getAllUtilisateurs());
-//    }
+    @GetMapping
+    public ResponseEntity<List<UtilisateurDTO>> getAllUtilisateurs() {
+        List<UtilisateurDTO> utilisateurs = utilisateurService.getAllUtilisateurs();
+        return ResponseEntity.ok(utilisateurs);
+    }
 }

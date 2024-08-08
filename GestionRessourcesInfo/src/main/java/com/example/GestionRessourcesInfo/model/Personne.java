@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "dtype")
+@DiscriminatorColumn(name = "dtotype")
 public class Personne implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

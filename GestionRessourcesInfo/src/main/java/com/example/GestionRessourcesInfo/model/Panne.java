@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,8 +22,11 @@ public class Panne {
     private Date datePanne;
     private boolean resolu;
 
+
     @ManyToOne
+    @JoinColumn(name = "equipement_id")
     private Equipement equipement;
 
-
+    @OneToMany(mappedBy = "panne")
+    private List<TicketDeSupport> tickets;
 }

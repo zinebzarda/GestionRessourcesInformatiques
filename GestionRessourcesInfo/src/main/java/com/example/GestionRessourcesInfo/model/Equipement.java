@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,5 +25,7 @@ public class Equipement {
     private EtatEquipement etat;
     private Date dateAcquisition;
 
+    @OneToMany(mappedBy = "equipement")
+    private List<Panne> pannes;
 
 }

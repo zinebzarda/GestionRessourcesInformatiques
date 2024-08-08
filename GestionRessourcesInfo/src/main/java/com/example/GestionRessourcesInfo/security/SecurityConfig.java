@@ -1,61 +1,62 @@
 package com.example.GestionRessourcesInfo.security;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.boot.web.servlet.filter.OrderedHiddenHttpMethodFilter;
+import com.example.GestionRessourcesInfo.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static org.springframework.http.HttpMethod.POST;
+
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfig  {
 
-    private final JwtAuthorizationFilter jwtAuthorizationFilter;
-    private final PersonneService personneService;
+    private final CustomUserDetailsService customUserDetailsService;
 
-    public SecurityConfig(JwtAuthorizationFilter jwtAuthorizationFilter, PersonneService personneService) {
-        this.jwtAuthorizationFilter = jwtAuthorizationFilter;
-        this.personneService = personneService;
+    public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
+        this.customUserDetailsService = customUserDetailsService;
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/register", "/api/users/login").permitAll()
-                        .requestMatchers("/api/users/delete").hasAnyRole("ADMIN")
-                        .requestMatchers("/api/users/**", "/api/equipements/**", "/api/techniciens/**","/api/pannes/**").hasRole("ADMIN")
-                        .requestMatchers("/api/tickets/create").authenticated()
-                        .requestMatchers("/api/tickets/create").hasRole("USER")
-                        .requestMatchers("api/panne-equipment/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
-                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
 
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        System.out.println("filtercjain///////////");
+
+        http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(expressionInterceptUrlRegistry ->
+                        expressionInterceptUrlRegistry
+
+                                .requestMatchers("/auth").permitAll()
+                                .requestMatchers(POST, "/api/equipements/**").hasRole("ADMIN")
+//                                .requestMatchers("/admin/**").hasRole("ADMIN")
+//                                .requestMatchers("/user/**").hasRole("USER")
+//                                .requestMatchers("/technician/**").hasRole("TECHNICIAN")
+                                .anyRequest().authenticated()
+
+                )
+                .formLogin(formLogin ->formLogin.disable());
+        http.addFilterBefore(new JwtAuthorizationFilter((customUserDetailsService)), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
     @Bean
-    public OrderedHiddenHttpMethodFilter hiddenHttpMethodFilter() {
-        return new OrderedHiddenHttpMethodFilter();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-
-    @PostConstruct
-    public void initAdminUser() {
-        personneService.createAdminUserIfNotExist();
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        System.out.println("///////////athhmanager");
+        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+        return authenticationManagerBuilder.build();
     }
 }

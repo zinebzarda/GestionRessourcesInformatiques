@@ -1,28 +1,16 @@
 package com.example.GestionRessourcesInfo.model;
 
-import jakarta.persistence.*;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import lombok.*;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.List;
-
-@Getter
-@Setter
-@AllArgsConstructor
 @Entity
-@Table(name = "Technicien")
-@PrimaryKeyJoinColumn(name = "id")
+@Setter
+@Getter
+@DiscriminatorValue("TECHNICIAN")
 public class TechnicienIT extends Personne {
-    @Column(name = "specialite")
-    private String specialite;
 
-    @Override
-    public String getRole() {
-        return "ROLE_TECHNICIEN";
-    }
-    public TechnicienIT() {
-        super();
-        this.setRole("ROLE_TECHNICIEN");
-    }
+
 
 }

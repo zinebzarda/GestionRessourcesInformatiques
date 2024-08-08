@@ -1,28 +1,24 @@
 package com.example.GestionRessourcesInfo.security;
 
+import com.example.GestionRessourcesInfo.model.enums.Role;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 
-@Service
 public class JwtAuth {
+    public static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    @Value("${security.jwt.secret-key}")
-    private String secretKey;
-
-    public String generateToken(String username, String role) {
-        Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+    public static String generateToken(String username, Role role) {
+        System.out.println("///////////////////"+username+"GENERATETOKEN JWTAUTH");
         return Jwts.builder()
-                .setSubject(username)
-                .claim("role", role)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))
-                .signWith(key)
+                .subject(username)
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000)) // 24 hours
+                .claim("roles",role)
+                .signWith(SECRET_KEY)
                 .compact();
     }
 }

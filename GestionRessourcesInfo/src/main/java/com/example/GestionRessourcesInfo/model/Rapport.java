@@ -1,33 +1,26 @@
 package com.example.GestionRessourcesInfo.model;
 
+import com.example.GestionRessourcesInfo.model.enums.TypeRapport;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.Date;
-
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-
+@AllArgsConstructor
 @Entity
-@Table(name = "rapports")
 public class Rapport {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private TypeRapport type;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
     private Date dateGeneration;
-
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Lob
     private String contenu;
 
 }

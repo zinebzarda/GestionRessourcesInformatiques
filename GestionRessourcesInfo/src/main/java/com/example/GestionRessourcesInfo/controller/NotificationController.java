@@ -1,5 +1,6 @@
 package com.example.GestionRessourcesInfo.controller;
 
+import com.example.GestionRessourcesInfo.model.AdministrateurIT;
 import com.example.GestionRessourcesInfo.model.Notification;
 import com.example.GestionRessourcesInfo.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class NotificationController {
     }
 
     @GetMapping("/admin/{adminId}/unread")
-    public ResponseEntity<List<Notification>> getUnreadNotificationsForAdmin(@PathVariable Long adminId) {
+    public ResponseEntity<List<Notification>> getUnreadNotificationsForAdmin(@PathVariable AdministrateurIT adminId) {
         List<Notification> notifications = notificationService.getUnreadNotificationsForAdmin(adminId);
         return ResponseEntity.ok(notifications);
     }

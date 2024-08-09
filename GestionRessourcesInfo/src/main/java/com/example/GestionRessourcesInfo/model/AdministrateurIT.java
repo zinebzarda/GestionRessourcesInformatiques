@@ -8,15 +8,15 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
-@Entity
-@DiscriminatorValue("ADMIN")
-public class AdministrateurIT extends Personne {
+    @Getter
+    @Setter
+    @Entity
+    @DiscriminatorValue("ADMIN")
+    public class AdministrateurIT extends Personne {
 
-    @OneToMany(mappedBy = "admin")
-    private List<Rapport> reports;
+        @OneToMany(mappedBy = "administrateurIT")
+        private List<Rapport> reports;
 
-    @OneToMany(mappedBy = "admin")
-    private List<Notification> notifications;
-}
+        @OneToMany(mappedBy = "administrateurIT")
+        private List<Notification> notifications;
+    }

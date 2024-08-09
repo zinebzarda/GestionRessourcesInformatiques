@@ -4,6 +4,7 @@ import com.example.GestionRessourcesInfo.dto.UtilisateurDTO;
 import com.example.GestionRessourcesInfo.model.Utilisateur;
 import com.example.GestionRessourcesInfo.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +16,14 @@ public class UtilisateurService {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public UtilisateurDTO creerUtilisateur(UtilisateurDTO utilisateurDTO) {
         Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setUsername(utilisateurDTO.getNom());
+        utilisateur.setUsername(utilisateurDTO.getUsername());
         utilisateur.setEmail(utilisateurDTO.getEmail());
-        utilisateur.setPassword(utilisateurDTO.getMotDePasse());
+        utilisateur.setPassword(passwordEncoder.encode(utilisateurDTO.getPassword())); // Encode the password
 
         Utilisateur savedUtilisateur = utilisateurRepository.save(utilisateur);
 
@@ -35,7 +39,7 @@ public class UtilisateurService {
     private UtilisateurDTO convertToDTO(Utilisateur utilisateur) {
         UtilisateurDTO dto = new UtilisateurDTO();
         dto.setId(utilisateur.getId());
-        dto.setNom(utilisateur.getUsername());
+        dto.setUsername(utilisateur.getUsername());
         dto.setEmail(utilisateur.getEmail());
         return dto;
     }

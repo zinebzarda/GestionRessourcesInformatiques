@@ -7,15 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-
-@Entity
-@Setter
 @Getter
+@Setter
+@Entity
 @DiscriminatorValue("TECHNICIAN")
 public class TechnicienIT extends Personne {
 
-
-    @OneToMany(mappedBy = "technicien")
+    @OneToMany(mappedBy = "technicienIT")
     private List<TicketDeSupport> ticketsSupport;
 
     @OneToMany(mappedBy = "technicienIT")

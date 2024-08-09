@@ -1,5 +1,6 @@
 package com.example.GestionRessourcesInfo.service;
 
+import com.example.GestionRessourcesInfo.model.AdministrateurIT;
 import com.example.GestionRessourcesInfo.model.Notification;
 import com.example.GestionRessourcesInfo.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,9 @@ public class NotificationService {
         return notificationRepository.findById(id).orElse(null);
     }
 
-    public List<Notification> getUnreadNotificationsForAdmin(Long adminId) {
-        return notificationRepository.findByAdministrateurIdAndLu(adminId, false);
+    public List<Notification> getUnreadNotificationsForAdmin(AdministrateurIT adminId) {
+        return notificationRepository.findByAdministrateurITAndLu(adminId, false);
     }
-
     public Notification updateNotification(Notification notification) {
         return notificationRepository.save(notification);
     }

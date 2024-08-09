@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +22,7 @@ public class TicketDeSupport {
     private EtatTicket etat;
     private Date dateCreation;
     private Date dateResolution;
+
     @ManyToOne
     @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
@@ -35,4 +35,3 @@ public class TicketDeSupport {
     @JoinColumn(name = "panne_id")
     private Panne panne;
 }
-

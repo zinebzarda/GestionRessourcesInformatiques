@@ -14,7 +14,7 @@ import lombok.Setter;
 
 public class UtilisateurDTO {
     private Long id;
-    private String nom;
+    private String username;
     private String email;
-    private String motDePasse;
+    private String password;
 }

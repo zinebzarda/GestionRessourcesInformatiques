@@ -15,7 +15,7 @@ public class PanneController {
     @Autowired
     private PanneService panneService;
 
-    @PostMapping
+    @PostMapping("/addPanne")
     public ResponseEntity<Panne> creerPanne(@RequestBody Panne panne) {
         Panne createdPanne = panneService.creerPanne(panne);
         return ResponseEntity.ok(createdPanne);
@@ -33,14 +33,14 @@ public class PanneController {
         return ResponseEntity.ok(panne);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Panne> updatePanne(@PathVariable Long id, @RequestBody Panne panne) {
         panne.setId(id);
         Panne updatedPanne = panneService.updatePanne(panne);
         return ResponseEntity.ok(updatedPanne);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletePanne(@PathVariable Long id) {
         panneService.deletePanne(id);
         return ResponseEntity.noContent().build();

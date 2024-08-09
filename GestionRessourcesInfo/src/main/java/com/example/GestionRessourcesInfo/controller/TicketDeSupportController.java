@@ -15,15 +15,16 @@ public class TicketDeSupportController {
     @Autowired
     private TicketDeSupportService ticketDeSupportService;
 
-    @PostMapping
+    @PostMapping("/addTicket")
     public ResponseEntity<TicketDeSupport> creerTicketDeSupport(@RequestBody TicketDeSupport ticketDeSupport) {
         TicketDeSupport createdTicket = ticketDeSupportService.creerTicketDeSupport(ticketDeSupport);
         return ResponseEntity.ok(createdTicket);
     }
 
-    @GetMapping
+    @GetMapping("/afficher")
     public ResponseEntity<List<TicketDeSupport>> getAllTicketsDeSupport() {
         List<TicketDeSupport> tickets = ticketDeSupportService.getAllTicketsDeSupport();
+        System.out.println("////////////////////////////////////////////////////");
         return ResponseEntity.ok(tickets);
     }
 
@@ -33,14 +34,14 @@ public class TicketDeSupportController {
         return ResponseEntity.ok(ticket);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<TicketDeSupport> updateTicketDeSupport(@PathVariable Long id, @RequestBody TicketDeSupport ticketDeSupport) {
         ticketDeSupport.setId(id);
         TicketDeSupport updatedTicket = ticketDeSupportService.updateTicketDeSupport(ticketDeSupport);
         return ResponseEntity.ok(updatedTicket);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteTicketDeSupport(@PathVariable Long id) {
         ticketDeSupportService.deleteTicketDeSupport(id);
         return ResponseEntity.noContent().build();

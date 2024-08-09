@@ -16,7 +16,7 @@ public class RapportController {
     @Autowired
     private RapportService rapportService;
 
-    @PostMapping
+    @PostMapping("/addRapp")
     public ResponseEntity<Rapport> creerRapport(@RequestBody Rapport rapport) {
         Rapport createdRapport = rapportService.creerRapport(rapport);
         return ResponseEntity.ok(createdRapport);
@@ -34,14 +34,14 @@ public class RapportController {
         return ResponseEntity.ok(rapport);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("edit/{id}")
     public ResponseEntity<Rapport> updateRapport(@PathVariable Long id, @RequestBody Rapport rapport) {
         rapport.setId(id);
         Rapport updatedRapport = rapportService.updateRapport(rapport);
         return ResponseEntity.ok(updatedRapport);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Void> deleteRapport(@PathVariable Long id) {
         rapportService.deleteRapport(id);
         return ResponseEntity.noContent().build();

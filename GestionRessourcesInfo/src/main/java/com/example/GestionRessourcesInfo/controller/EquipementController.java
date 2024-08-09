@@ -15,7 +15,7 @@ public class EquipementController {
     @Autowired
     private EquipementService equipementService;
 
-    @PostMapping
+    @PostMapping("/addEqui")
     public ResponseEntity<Equipement> creerEquipement(@RequestBody Equipement equipement) {
         Equipement createdEquipement = equipementService.creerEquipement(equipement);
         return ResponseEntity.ok(createdEquipement);
@@ -33,14 +33,14 @@ public class EquipementController {
         return ResponseEntity.ok(equipement);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("edit/{id}")
     public ResponseEntity<Equipement> updateEquipement(@PathVariable Long id, @RequestBody Equipement equipement) {
         equipement.setId(id);
         Equipement updatedEquipement = equipementService.updateEquipement(equipement);
         return ResponseEntity.ok(updatedEquipement);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Void> deleteEquipement(@PathVariable Long id) {
         equipementService.deleteEquipement(id);
         return ResponseEntity.noContent().build();

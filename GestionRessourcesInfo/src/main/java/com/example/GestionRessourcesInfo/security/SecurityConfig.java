@@ -39,14 +39,17 @@ public class SecurityConfig  {
                                 .requestMatchers("/auth").permitAll()
                                 .requestMatchers("/api/equipements/**").hasRole("ADMIN")
 
-                                .requestMatchers(GET, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN", "USER")
+                                .requestMatchers(GET, "/api/tickets/afficher").permitAll()
                                 .requestMatchers(POST, "/api/tickets").hasRole("USER")
                                 .requestMatchers(PUT, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN")
+                                .requestMatchers(PUT, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN")
                                 .requestMatchers(DELETE, "/api/tickets/**").hasRole("ADMIN")
-
                                 .requestMatchers(POST, "/api/tickets").hasRole("USER")
+
                                 .requestMatchers("/api/utilisateurs/**").hasRole("ADMIN")
+
                                 .requestMatchers("/api/notifications/**").hasRole("ADMIN")
+
                                 .requestMatchers("/api/pannes/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )

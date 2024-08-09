@@ -16,7 +16,7 @@ public class NotificationController {
     @Autowired
     private NotificationService notificationService;
 
-    @PostMapping
+    @PostMapping("/addNot")
     public ResponseEntity<Notification> creerNotification(@RequestBody Notification notification) {
         Notification createdNotification = notificationService.creerNotification(notification);
         return ResponseEntity.ok(createdNotification);
@@ -40,14 +40,14 @@ public class NotificationController {
         return ResponseEntity.ok(notifications);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("edit/{id}")
     public ResponseEntity<Notification> updateNotification(@PathVariable Long id, @RequestBody Notification notification) {
         notification.setId(id);
         Notification updatedNotification = notificationService.updateNotification(notification);
         return ResponseEntity.ok(updatedNotification);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Void> deleteNotification(@PathVariable Long id) {
         notificationService.deleteNotification(id);
         return ResponseEntity.noContent().build();

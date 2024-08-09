@@ -16,7 +16,7 @@ public class TechnicienITController {
     @Autowired
     private TechnicienITService technicienITService;
 
-    @PostMapping
+    @PostMapping("/addTech")
     public ResponseEntity<TechnicienIT> creerTechnicienIT(@RequestBody TechnicienIT technicienIT) {
         TechnicienIT createdTechnicien = technicienITService.creerTechnicienIT(technicienIT);
         return ResponseEntity.ok(createdTechnicien);
@@ -34,14 +34,14 @@ public class TechnicienITController {
         return ResponseEntity.ok(technicien);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("edit/{id}")
     public ResponseEntity<TechnicienIT> updateTechnicienIT(@PathVariable Long id, @RequestBody TechnicienIT technicienIT) {
         technicienIT.setId(id);
         TechnicienIT updatedTechnicien = technicienITService.updateTechnicienIT(technicienIT);
         return ResponseEntity.ok(updatedTechnicien);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Void> deleteTechnicienIT(@PathVariable Long id) {
         technicienITService.deleteTechnicienIT(id);
         return ResponseEntity.noContent().build();

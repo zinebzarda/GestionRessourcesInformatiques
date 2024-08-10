@@ -16,9 +16,13 @@ public class JwtAuth {
         return Jwts.builder()
                 .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000)) // 24 hours
-                .claim("roles",role)
+                .expiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))
+                .claim("roles",role.toString())
                 .signWith(SECRET_KEY)
                 .compact();
     }
+
+
+
+
 }

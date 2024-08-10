@@ -26,10 +26,10 @@ public class AdministrateurITService {
 
         if (existingAdmin.isEmpty()) {
             AdministrateurIT admin = new AdministrateurIT();
-            admin.setUsername("zineb");
+            admin.setUsername("admin");
             admin.setEmail(adminEmail);
             admin.setRole(Role.ADMIN);
-            admin.setPassword(passwordEncoder.encode("zineb"));
+            admin.setPassword(passwordEncoder.encode("admin"));
             administrateurITRepository.save(admin);
         }
     }

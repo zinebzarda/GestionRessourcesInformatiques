@@ -51,4 +51,7 @@ public class Personne implements UserDetails {
     }
 
 
+    public void setAuthorities() {
+
+    }
 }

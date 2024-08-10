@@ -12,11 +12,10 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.*;
-import static org.springframework.http.HttpMethod.DELETE;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig  {
+public class SecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
 
@@ -24,12 +23,10 @@ public class SecurityConfig  {
         this.customUserDetailsService = customUserDetailsService;
     }
 
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -38,18 +35,12 @@ public class SecurityConfig  {
                         expressionInterceptUrlRegistry
                                 .requestMatchers("/auth").permitAll()
                                 .requestMatchers("/api/equipements/**").hasRole("ADMIN")
-
                                 .requestMatchers(GET, "/api/tickets/afficher").permitAll()
                                 .requestMatchers(POST, "/api/tickets").hasRole("USER")
                                 .requestMatchers(PUT, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN")
-                                .requestMatchers(PUT, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN")
                                 .requestMatchers(DELETE, "/api/tickets/**").hasRole("ADMIN")
-                                .requestMatchers(POST, "/api/tickets").hasRole("USER")
-
                                 .requestMatchers("/api/utilisateurs/**").hasRole("ADMIN")
-
                                 .requestMatchers("/api/notifications/**").hasRole("ADMIN")
-
                                 .requestMatchers("/api/pannes/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
@@ -58,10 +49,8 @@ public class SecurityConfig  {
         return http.build();
     }
 
-
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        System.out.println("///////////athhmanager");
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
         return authenticationManagerBuilder.build();

@@ -1,8 +1,7 @@
 package com.example.GestionRessourcesInfo.model;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import com.example.GestionRessourcesInfo.model.enums.Role;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +11,10 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("TECHNICIAN")
 public class TechnicienIT extends Personne {
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.TECHNICIAN;
+
 
     @OneToMany(mappedBy = "technicienIT")
     private List<TicketDeSupport> ticketsSupport;

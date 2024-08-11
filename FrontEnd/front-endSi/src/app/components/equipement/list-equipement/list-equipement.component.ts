@@ -20,4 +20,11 @@ export class ListEquipementsComponent {
       this.equipements = data;
     });
   }
+
+
+  deleteEquipement(id: number) {
+    this.equipementService.deleteEquipement(id).subscribe(() => {
+      this.loadEquipements();
+    });
+  }
 }

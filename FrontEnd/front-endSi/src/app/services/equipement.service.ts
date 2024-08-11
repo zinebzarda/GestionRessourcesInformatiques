@@ -11,7 +11,7 @@ export class EquipementService {
 
   constructor(private http: HttpClient) {}
 
-
+// add
   addEquipement(equipement: Equipement): Observable<Equipement> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -22,7 +22,7 @@ export class EquipementService {
     return this.http.post<Equipement>(`${this.apiUrl}/addEqui`, equipement, { headers });
   }
 
-
+// show
   getAllEquipements(): Observable<Equipement[]> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -30,6 +30,17 @@ export class EquipementService {
     });
 
     return this.http.get<Equipement[]>(`${this.apiUrl}`, { headers });
+  }
+
+  // delete
+
+  deleteEquipement(id: number): Observable<void> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`, { headers });
   }
 
 

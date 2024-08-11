@@ -17,7 +17,7 @@
       <td>{{ equipement.dateAcquisition | date }}</td>
       <td>
         <button>Modifier</button>
-        <button>Supprimer</button>
+        <button (click)="deleteEquipement(equipement.id)">Supprimer</button>
       </td>
     </tr>
     </tbody>

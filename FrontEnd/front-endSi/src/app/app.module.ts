@@ -10,7 +10,7 @@ import { TechnicianDashboardComponent } from './components/technician/technician
 import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
 import {HttpClientModule, provideHttpClient, withFetch} from "@angular/common/http";
 import { AddEquipementComponent } from './components/equipement/add-equipement/add-equipement.component';
-import { ListEquipementComponent } from './components/equipement/list-equipement/list-equipement.component';
+import {ListEquipementsComponent} from "./components/equipement/list-equipement/list-equipement.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { ListEquipementComponent } from './components/equipement/list-equipement
     TechnicianDashboardComponent,
     UserDashboardComponent,
     AddEquipementComponent,
-    ListEquipementComponent
+    ListEquipementsComponent
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@ public class UtilisateurService {
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setUsername(utilisateurDTO.getUsername());
         utilisateur.setEmail(utilisateurDTO.getEmail());
-        utilisateur.setPassword(passwordEncoder.encode(utilisateurDTO.getPassword())); // Encode the password
+        utilisateur.setPassword(passwordEncoder.encode(utilisateurDTO.getPassword()));
 
         Utilisateur savedUtilisateur = utilisateurRepository.save(utilisateur);
 

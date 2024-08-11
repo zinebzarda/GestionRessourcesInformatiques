@@ -42,7 +42,6 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 );
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } catch (Exception e) {
-                // Log the exception for debugging
                 e.printStackTrace();
                 response.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid token");
                 return;

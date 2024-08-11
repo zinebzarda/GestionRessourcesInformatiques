@@ -35,8 +35,8 @@ export class AddEquipementComponent implements OnInit {
       this.equipementService.addEquipement(equipement).subscribe(
         response => {
           console.log('Equipment added successfully');
-          // Redirect to the list page after adding
-          this.router.navigate(['/list-equipements']); // Remplace '/list-equipements' par le chemin réel de la liste
+          // Reload the page to display the new equipment in the table
+          window.location.reload();
         },
         error => {
           console.error('Error creating equipment:', error);
@@ -47,4 +47,5 @@ export class AddEquipementComponent implements OnInit {
       );
     }
   }
+
 }

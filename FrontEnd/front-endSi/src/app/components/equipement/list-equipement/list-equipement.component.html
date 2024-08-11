@@ -1,1 +1,25 @@
-<p>list-equipement works!</p>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Date d'Acquisition</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let equipement of equipements">
+      <td>{{ equipement.id }}</td>
+      <td>{{ equipement.nom }}</td>
+      <td>{{ equipement.description }}</td>
+      <td>{{ equipement.dateAcquisition | date }}</td>
+      <td>
+        <button>Modifier</button>
+        <button>Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

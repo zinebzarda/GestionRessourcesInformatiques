@@ -1,22 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Equipement } from "../models/equipement";
+import {Equipement} from "../models/equipement";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EquipementService {
-  private apiUrl = 'http://localhost:8080/api/equipements/addEqui';
+  private apiUrl = 'http://localhost:8080/api/equipements';
 
   constructor(private http: HttpClient) {}
 
+
   addEquipement(equipement: Equipement): Observable<Equipement> {
-    const token = localStorage.getItem('token'); // hna khass token ykoun localStorage
+    const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}` // hna khass tssifti token f header
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
     });
 
-    return this.http.post<Equipement>(this.apiUrl, equipement, { headers: headers });
+    return this.http.post<Equipement>(`${this.apiUrl}/addEqui`, equipement, { headers });
   }
+
+
+  getAllEquipements(): Observable<Equipement[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<Equipement[]>(`${this.apiUrl}`, { headers });
+  }
+
+
+
 }

@@ -9,3 +9,5 @@ export interface Equipement {
   dateAcquisition: string;
   pannes?: Panne[];
 }
+
+

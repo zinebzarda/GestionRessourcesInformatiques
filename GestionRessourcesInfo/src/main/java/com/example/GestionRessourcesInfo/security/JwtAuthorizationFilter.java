@@ -34,18 +34,17 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                         .parseClaimsJws(jwt)
                         .getBody();
                 String username = claims.getSubject();
-
-              UserDetails userDetails=userDetailsService.loadUserByUsername(username);
-
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails,
-                        null,userDetails.getAuthorities()
-
+                        null,
+                        userDetails.getAuthorities()
                 );
-
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } catch (Exception e) {
-                response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                // Log the exception for debugging
+                e.printStackTrace();
+                response.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid token");
                 return;
             }
         }

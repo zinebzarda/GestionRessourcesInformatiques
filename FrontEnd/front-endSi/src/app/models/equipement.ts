@@ -1,11 +1,11 @@
-import {EtatEquipement} from "./enums/etat-equipement";
-import {Panne} from "./panne";
+import { EtatEquipement } from './enums/etat-equipement';
+import { Panne } from './panne';
 
 export interface Equipement {
-  id: number;
+  id?: number;
   nom: string;
   description: string;
   etat: EtatEquipement;
-  dateAcquisition: Date;
-  pannes: Panne[];
+  dateAcquisition: string;
+  pannes?: Panne[];
 }

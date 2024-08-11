@@ -1,8 +1,7 @@
-import {Rapport} from "./rapport";
-import {TicketDeSupport} from "./ticket-de-support";
 import {Personne} from "./personne";
+import {Rapport} from "./rapport";
 
-export interface TechnicienIT extends Personne {
-  ticketsSupport: TicketDeSupport[];
+export interface AdministrateurIT extends Personne {
   reports: Rapport[];
+  notifications: Notification[];
 }

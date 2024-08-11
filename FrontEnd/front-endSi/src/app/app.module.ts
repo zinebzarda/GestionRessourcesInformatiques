@@ -9,6 +9,8 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
 import { TechnicianDashboardComponent } from './components/technician/technician-dashboard/technician-dashboard.component';
 import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
 import {HttpClientModule, provideHttpClient, withFetch} from "@angular/common/http";
+import { AddEquipementComponent } from './components/equipement/add-equipement/add-equipement.component';
+import { ListEquipementComponent } from './components/equipement/list-equipement/list-equipement.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {HttpClientModule, provideHttpClient, withFetch} from "@angular/common/ht
     LoginComponent,
     AdminDashboardComponent,
     TechnicianDashboardComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    AddEquipementComponent,
+    ListEquipementComponent
   ],
   imports: [
     BrowserModule,

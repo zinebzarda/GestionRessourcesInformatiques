@@ -1,6 +1,6 @@
 import {TypeRapport} from "./enums/type-rapport";
-import {AdministrateurIT} from "./administrateur-it";
 import {TechnicienIT} from "./technicien-it";
+import {AdministrateurIT} from "./administrateur-it";
 
 export interface Rapport {
   id: number;

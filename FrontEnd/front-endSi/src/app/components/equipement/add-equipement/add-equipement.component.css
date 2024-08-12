@@ -47,8 +47,6 @@
   border: 1px solid var(--grey);
   border-radius: 8px;
   font-size: 14px;
-  color: var(--dark);
-  background-color: var(--light);
   transition: border-color 0.3s ease;
 }
 

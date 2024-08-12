@@ -16,6 +16,10 @@ import { AddUtilisateurComponent } from './components/utilisateurs/add-utilisate
 import {ListUtilisateurComponent} from "./components/utilisateurs/list-utilisateur/list-utilisateur.component";
 import {ListEquipementComponent} from "./components/equipement/list-equipement/list-equipement.component";
 import { UserPageComponent } from './components/utilisateurs/user-page/user-page.component';
+import { AddTicketComponent } from './components/tickets/add-ticket/add-ticket.component';
+import { ListTicketComponent } from './components/tickets/list-ticket/list-ticket.component';
+import { EditTicketComponent } from './components/tickets/edit-ticket/edit-ticket.component';
+import { TicketPageComponent } from './components/tickets/ticket-page/ticket-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { UserPageComponent } from './components/utilisateurs/user-page/user-page
     EquipementPageComponent,
     AddUtilisateurComponent,
     ListUtilisateurComponent,
-    UserPageComponent
+    UserPageComponent,
+    AddTicketComponent,
+    ListTicketComponent,
+    EditTicketComponent,
+    TicketPageComponent
   ],
   imports: [
     BrowserModule,

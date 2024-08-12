@@ -7,6 +7,7 @@ import { UserDashboardComponent } from './components/user/user-dashboard/user-da
 import { AddEquipementComponent } from './components/equipement/add-equipement/add-equipement.component';
 import {EquipementPageComponent} from "./components/equipement/equipement-page/equipement-page.component";
 import {UserPageComponent} from "./components/utilisateurs/user-page/user-page.component";
+import {TicketPageComponent} from "./components/tickets/ticket-page/ticket-page.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent, children:[
       { path: '', component: EquipementPageComponent },
       { path: 'User-page', component: UserPageComponent },
+      { path: 'Ticket-page', component: TicketPageComponent },
       ]},
   { path: 'technician-dashboard', component: TechnicianDashboardComponent },
 

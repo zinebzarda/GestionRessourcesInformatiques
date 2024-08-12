@@ -20,11 +20,12 @@ export class ListEquipementsComponent {
       this.equipements = data;
     });
   }
-
-
-  deleteEquipement(id: number) {
+//  delete
+  deleteEquipement(id: number | undefined) {
     this.equipementService.deleteEquipement(id).subscribe(() => {
       this.loadEquipements();
     });
   }
+
+
 }

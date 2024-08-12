@@ -34,16 +34,8 @@ export class AddEquipementComponent implements OnInit {
       const equipement: Equipement = this.equipementForm.value;
       this.equipementService.addEquipement(equipement).subscribe(
         response => {
-          console.log('Equipment added successfully');
-          // Reload the page to display the new equipment in the table
           window.location.reload();
         },
-        error => {
-          console.error('Error creating equipment:', error);
-          if (error.status === 403) {
-            console.log('Access Denied. Admin privileges required.');
-          }
-        }
       );
     }
   }

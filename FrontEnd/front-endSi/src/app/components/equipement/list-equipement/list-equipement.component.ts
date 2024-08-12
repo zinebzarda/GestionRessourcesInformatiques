@@ -3,11 +3,11 @@ import { Equipement } from "../../../models/equipement";
 import { EquipementService } from "../../../services/equipement.service";
 
 @Component({
-  selector: 'app-list-equipements',
+  selector: 'app-list-equipement',
   templateUrl: './list-equipement.component.html',
   styleUrls: ['./list-equipement.component.css']
 })
-export class ListEquipementsComponent {
+export class ListEquipementComponent {
   equipements: Equipement[] = [];
   showEditPopup = false;
   selectedEquipement: Equipement | null = null;
@@ -36,6 +36,6 @@ export class ListEquipementsComponent {
   closeEditPopup() {
     this.showEditPopup = false;
     this.selectedEquipement = null;
-    this.loadEquipements();  
+    this.loadEquipements();
   }
 }

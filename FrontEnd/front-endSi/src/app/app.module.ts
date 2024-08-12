@@ -10,8 +10,12 @@ import { TechnicianDashboardComponent } from './components/technician/technician
 import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
 import {HttpClientModule, provideHttpClient, withFetch} from "@angular/common/http";
 import { AddEquipementComponent } from './components/equipement/add-equipement/add-equipement.component';
-import {ListEquipementsComponent} from "./components/equipement/list-equipement/list-equipement.component";
 import { EditEquipementComponent } from './components/equipement/edit-equipement/edit-equipement.component';
+import { EquipementPageComponent } from './components/equipement/equipement-page/equipement-page.component';
+import { AddUtilisateurComponent } from './components/utilisateurs/add-utilisateur/add-utilisateur.component';
+import {ListUtilisateurComponent} from "./components/utilisateurs/list-utilisateur/list-utilisateur.component";
+import {ListEquipementComponent} from "./components/equipement/list-equipement/list-equipement.component";
+import { UserPageComponent } from './components/utilisateurs/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +25,12 @@ import { EditEquipementComponent } from './components/equipement/edit-equipement
     TechnicianDashboardComponent,
     UserDashboardComponent,
     AddEquipementComponent,
-    ListEquipementsComponent,
-    EditEquipementComponent
+    ListEquipementComponent,
+    EditEquipementComponent,
+    EquipementPageComponent,
+    AddUtilisateurComponent,
+    ListUtilisateurComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

@@ -5,14 +5,23 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
 import { TechnicianDashboardComponent } from './components/technician/technician-dashboard/technician-dashboard.component';
 import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
 import { AddEquipementComponent } from './components/equipement/add-equipement/add-equipement.component';
+import {EquipementPageComponent} from "./components/equipement/equipement-page/equipement-page.component";
+import {UserPageComponent} from "./components/utilisateurs/user-page/user-page.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
+  { path: 'admin-dashboard', component: AdminDashboardComponent, children:[
+      { path: '', component: EquipementPageComponent },
+      { path: 'User-page', component: UserPageComponent },
+      ]},
   { path: 'technician-dashboard', component: TechnicianDashboardComponent },
+
   { path: 'user-dashboard', component: UserDashboardComponent },
+
   { path: 'add-equipement', component: AddEquipementComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+
 ];
 
 @NgModule({

@@ -15,7 +15,7 @@
 
 /* Main content of the popup */
 .popup-content {
-  background: #ffffff;
+  background: #073055;
   padding: 30px;
   border-radius: 12px; /* Slightly more rounded corners */
   width: 80%;
@@ -41,7 +41,7 @@
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  color: #333; /* Darker text color */
+  color: #ffffff; /* Darker text color */
 }
 
 /* Style for input fields */

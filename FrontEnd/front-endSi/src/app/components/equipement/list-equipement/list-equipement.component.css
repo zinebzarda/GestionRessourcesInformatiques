@@ -39,12 +39,9 @@ th, td {
 }
 
 th {
-  background-color: #132f4e;
+  background-color: #153655;
 }
 
-button {
-  margin: 0 5px;
-}
 
 /* Styles pour la popup */
 .popup {
@@ -65,3 +62,46 @@ button {
   border-radius: 5px;
   width: 50%;
 }
+
+
+.btn-edit {
+  background-color: #4CAF50;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.btn-edit:hover {
+  background-color: white;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.btn-delete:hover {
+  background-color: white;
+  color: #f44336;
+  border: 2px solid #f44336;
+}
+

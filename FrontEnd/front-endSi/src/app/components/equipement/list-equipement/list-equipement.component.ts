@@ -36,5 +36,6 @@ export class ListEquipementsComponent {
   closeEditPopup() {
     this.showEditPopup = false;
     this.selectedEquipement = null;
+    this.loadEquipements();  
   }
 }

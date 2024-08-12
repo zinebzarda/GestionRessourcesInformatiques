@@ -16,12 +16,12 @@ export class EditEquipementComponent {
   onSubmit() {
     if (this.equipement) {
       this.equipementService.updateEquipement(this.equipement).subscribe(() => {
-        this.closePopup.emit();
+        this.closePopup.emit();  // Emit event to close popup
       });
     }
   }
 
   closePopupMethod() {
-    this.closePopup.emit();
+    this.closePopup.emit();  // Emit event to close popup
   }
 }

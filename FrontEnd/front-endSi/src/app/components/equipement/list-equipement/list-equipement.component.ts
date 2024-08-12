@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {Equipement} from "../../../models/equipement";
-import {EquipementService} from "../../../services/equipement.service";
-
+import { Equipement } from "../../../models/equipement";
+import { EquipementService } from "../../../services/equipement.service";
 
 @Component({
   selector: 'app-list-equipements',
@@ -10,6 +9,8 @@ import {EquipementService} from "../../../services/equipement.service";
 })
 export class ListEquipementsComponent {
   equipements: Equipement[] = [];
+  showEditPopup = false;
+  selectedEquipement: Equipement | null = null;
 
   constructor(private equipementService: EquipementService) {
     this.loadEquipements();
@@ -20,12 +21,20 @@ export class ListEquipementsComponent {
       this.equipements = data;
     });
   }
-//  delete
+
   deleteEquipement(id: number | undefined) {
     this.equipementService.deleteEquipement(id).subscribe(() => {
       this.loadEquipements();
     });
   }
 
+  openEditPopup(equipement: Equipement) {
+    this.selectedEquipement = equipement;
+    this.showEditPopup = true;
+  }
 
+  closeEditPopup() {
+    this.showEditPopup = false;
+    this.selectedEquipement = null;
+  }
 }

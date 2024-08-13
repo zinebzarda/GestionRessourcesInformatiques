@@ -23,6 +23,7 @@ export class AddUtilisateurComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       role: ['', Validators.required]
+
     });
   }
 

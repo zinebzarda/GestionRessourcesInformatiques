@@ -22,7 +22,6 @@ const routes: Routes = [
 
   { path: 'user-dashboard', component: UserDashboardComponent },
 
-  { path: 'add-equipement', component: AddEquipementComponent },
 
 ];
 

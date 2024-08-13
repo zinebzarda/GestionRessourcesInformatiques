@@ -5,7 +5,6 @@
     <tr>
       <th>Nom d'utilisateur</th>
       <th>Email</th>
-      <th>Mot de passe</th>
       <th>Rôle</th>
     </tr>
     </thead>
@@ -13,7 +12,6 @@
     <tr *ngFor="let utilisateur of utilisateurs">
       <td>{{ utilisateur.username }}</td>
       <td>{{ utilisateur.email }}</td>
-      <td>{{ utilisateur.password }}</td>
       <td>{{ utilisateur.role }}</td>
     </tr>
     </tbody>

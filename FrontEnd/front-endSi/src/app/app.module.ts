@@ -1,6 +1,4 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import {NgModule} from "@angular/core";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,7 +17,9 @@ import { UserPageComponent } from './components/utilisateurs/user-page/user-page
 import { AddTicketComponent } from './components/tickets/add-ticket/add-ticket.component';
 import { ListTicketComponent } from './components/tickets/list-ticket/list-ticket.component';
 import { EditTicketComponent } from './components/tickets/edit-ticket/edit-ticket.component';
-import { TicketPageComponent } from './components/tickets/ticket-page/ticket-page.component';
+import {TicketPageComponent} from "./components/tickets/ticket-page/ticket-page.component";
+import {BrowserModule} from "@angular/platform-browser";
+
 
 @NgModule({
   declarations: [

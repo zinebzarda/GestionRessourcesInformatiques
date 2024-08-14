@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {EtatTicket} from "../../../models/enums/etat-ticket";
-import {TicketService} from "../../../services/ticket.service";
-import {TicketDeSupport} from "../../../models/ticket-de-support";
+import { EtatTicket } from '../../../models/enums/etat-ticket';
+import { TicketService } from '../../../services/ticket.service';
+import { TicketDeSupport } from '../../../models/ticket-de-support';
 
 @Component({
   selector: 'app-add-ticket',
@@ -34,7 +34,11 @@ export class AddTicketComponent implements OnInit {
       }),
       panne: this.fb.group({
         id: ['']
-      })
+      }),
+      // Ajoutez les autres attributs ici
+      nomEquipement: ['', Validators.required],
+      urgence: ['', Validators.required],
+      priorite: ['', Validators.required]
     });
   }
 
@@ -46,7 +50,7 @@ export class AddTicketComponent implements OnInit {
           console.log('Ticket ajouté avec succès');
           this.router.navigate(['/tickets-list']);
         },
-          (error: any) => {
+        (error: any) => {
           console.error('Erreur lors de l\'ajout du ticket:', error);
         }
       );

@@ -1,7 +1,8 @@
+// utilisateur.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UtilisateurDTO } from '../models/utilisateur-dto';
+import {UtilisateurDTO} from "../models/utilisateur-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -11,26 +12,21 @@ export class UtilisateurService {
 
   constructor(private http: HttpClient) {}
 
-
   addUtilisateur(utilisateur: UtilisateurDTO): Observable<UtilisateurDTO> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
     });
     return this.http.post<UtilisateurDTO>(`${this.apiUrl}/addUser`, utilisateur, { headers });
   }
 
-
   getAllUtilisateurs(): Observable<UtilisateurDTO[]> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
     });
     return this.http.get<UtilisateurDTO[]>(this.apiUrl, { headers });
   }
-
-
-
-
-
 }

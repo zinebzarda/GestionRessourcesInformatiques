@@ -19,6 +19,10 @@ import { ListTicketComponent } from './components/tickets/list-ticket/list-ticke
 import { EditTicketComponent } from './components/tickets/edit-ticket/edit-ticket.component';
 import {TicketPageComponent} from "./components/tickets/ticket-page/ticket-page.component";
 import {BrowserModule} from "@angular/platform-browser";
+import { AddPanneComponent } from './components/panne/add-panne/add-panne.component';
+import { ShowPanneComponent } from './components/panne/show-panne/show-panne.component';
+import { EditPanneComponent } from './components/panne/edit-panne/edit-panne.component';
+import { PannePageComponent } from './components/panne/panne-page/panne-page.component';
 
 
 @NgModule({
@@ -38,7 +42,11 @@ import {BrowserModule} from "@angular/platform-browser";
     AddTicketComponent,
     ListTicketComponent,
     EditTicketComponent,
-    TicketPageComponent
+    TicketPageComponent,
+    AddPanneComponent,
+    ShowPanneComponent,
+    EditPanneComponent,
+    PannePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<div class="edit-ticket">
+<div class="edit-ticket" *ngIf="ticketForm">
   <div class="header">
     <i class='bx bx-edit-alt'></i>
     <h3>Modifier Ticket</h3>
@@ -38,7 +38,6 @@
         <small>Resolution date is required.</small>
       </div>
     </div>
-
 
     <div class="form-actions">
       <button type="submit" [disabled]="ticketForm.invalid">

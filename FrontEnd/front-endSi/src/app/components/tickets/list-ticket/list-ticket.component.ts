@@ -14,6 +14,7 @@ export class ListTicketComponent implements OnInit {
 
   ngOnInit(): void {
     this.ticketService.getAllTickets().subscribe(
+
       (data: TicketDeSupport[]) => {
         this.tickets = data;
       },

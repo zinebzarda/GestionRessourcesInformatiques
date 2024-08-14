@@ -22,5 +22,36 @@
     <input id="dateResolution" type="date" formControlName="dateResolution" />
   </div>
 
+  <div>
+    <label for="utilisateur">Utilisateur ID:</label>
+    <input id="utilisateur" formControlName="utilisateur.id" />
+  </div>
+
+  <div>
+    <label for="technicienIT">Technicien IT ID:</label>
+    <input id="technicienIT" formControlName="technicienIT.id" />
+  </div>
+
+  <div>
+    <label for="panne">Panne ID:</label>
+    <input id="panne" formControlName="panne.id" />
+  </div>
+
+  <!-- Nouveaux champs -->
+  <div>
+    <label for="nomEquipement">Nom de l'Équipement:</label>
+    <input id="nomEquipement" formControlName="nomEquipement" />
+  </div>
+
+  <div>
+    <label for="urgence">Urgence:</label>
+    <input id="urgence" formControlName="urgence" />
+  </div>
+
+  <div>
+    <label for="priorite">Priorité:</label>
+    <input id="priorite" formControlName="priorite" />
+  </div>
+
   <button type="submit" [disabled]="ticketForm.invalid">Ajouter Ticket</button>
 </form>

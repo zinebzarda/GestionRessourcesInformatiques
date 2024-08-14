@@ -5,7 +5,7 @@
     <!-- Champ pour le nom d'utilisateur -->
     <div class="form-group">
       <label for="username">Nom d'utilisateur</label>
-      <input id="username" formControlName="username" placeholder="Entrez le nom d'utilisateur">
+      <input id="username" formControlName="username" placeholder="Entrez le nom d'utilisateur" required>
       <div *ngIf="utilisateurForm.get('username')?.invalid && utilisateurForm.get('username')?.touched" class="error-message">
         Le nom d'utilisateur est requis.
       </div>
@@ -14,7 +14,7 @@
     <!-- Champ pour l'email -->
     <div class="form-group">
       <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email" placeholder="Entrez l'email">
+      <input id="email" type="email" formControlName="email" placeholder="Entrez l'email" required>
       <div *ngIf="utilisateurForm.get('email')?.invalid && utilisateurForm.get('email')?.touched" class="error-message">
         Un email valide est requis.
       </div>
@@ -23,7 +23,7 @@
     <!-- Champ pour le mot de passe -->
     <div class="form-group">
       <label for="password">Mot de passe</label>
-      <input id="password" type="password" formControlName="password" placeholder="Entrez le mot de passe">
+      <input id="password" type="password" formControlName="password" placeholder="Entrez le mot de passe" required>
       <div *ngIf="utilisateurForm.get('password')?.invalid && utilisateurForm.get('password')?.touched" class="error-message">
         Le mot de passe est requis.
       </div>
@@ -32,7 +32,7 @@
     <!-- Champ pour le rôle -->
     <div class="form-group">
       <label for="role">Rôle</label>
-      <select id="role" formControlName="role">
+      <select id="role" formControlName="role" required>
         <option value="" disabled>Sélectionnez un rôle</option>
         <option value="ADMIN">ADMIN</option>
         <option value="USER">USER</option>

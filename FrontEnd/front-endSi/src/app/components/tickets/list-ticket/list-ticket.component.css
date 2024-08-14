@@ -55,13 +55,42 @@ button, a {
   transition-duration: 0.4s;
 }
 
-button {
+.edit-btn {
+  background-color: #a3fba6;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.edit-btn:hover {
+  background-color: white;
+  color: #a2ffa6;
+  border: 2px solid #a1ffa6;
+}
+
+.delete-btn {
   background-color: #ff958e;
   color: white;
   border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
 }
 
-button:hover {
+.delete-btn:hover {
   background-color: white;
   color: #ff958e;
   border: 2px solid #ff958e;

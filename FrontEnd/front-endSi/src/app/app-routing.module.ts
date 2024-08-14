@@ -4,10 +4,10 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { TechnicianDashboardComponent } from './components/technician/technician-dashboard/technician-dashboard.component';
 import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
-import { AddEquipementComponent } from './components/equipement/add-equipement/add-equipement.component';
 import {EquipementPageComponent} from "./components/equipement/equipement-page/equipement-page.component";
 import {UserPageComponent} from "./components/utilisateurs/user-page/user-page.component";
 import {TicketPageComponent} from "./components/tickets/ticket-page/ticket-page.component";
+import {AddTicketComponent} from "./components/tickets/add-ticket/add-ticket.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,7 +20,9 @@ const routes: Routes = [
       ]},
   { path: 'technician-dashboard', component: TechnicianDashboardComponent },
 
-  { path: 'user-dashboard', component: UserDashboardComponent },
+  { path: 'user-dashboard', component: UserDashboardComponent, children:[
+      { path: '', component: AddTicketComponent },
+    ] },
 
 
 ];

@@ -4,6 +4,7 @@
     <tr>
       <th>Nom</th>
       <th>Description</th>
+      <th>Etats</th>
       <th>Date d'Acquisition</th>
       <th>Actions</th>
     </tr>
@@ -12,6 +13,7 @@
     <tr *ngFor="let equipement of equipements">
       <td>{{ equipement.nom }}</td>
       <td>{{ equipement.description }}</td>
+      <td>{{ equipement.etat }}</td>
       <td>{{ equipement.dateAcquisition | date }}</td>
       <td>
         <button class="edit-btn" (click)="openEditPopup(equipement)">Modifier</button>

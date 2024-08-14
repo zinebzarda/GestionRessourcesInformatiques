@@ -36,7 +36,7 @@ public class SecurityConfig {
                         expressionInterceptUrlRegistry
                                 .requestMatchers("/auth").permitAll()
                                 .requestMatchers("/api/equipements/**").hasRole("ADMIN")
-                                .requestMatchers(GET, "/api/tickets/afficher").permitAll()
+                                .requestMatchers("/api/tickets/afficher").permitAll()
                                 .requestMatchers(POST, "/api/tickets").hasRole("USER")
                                 .requestMatchers(PUT, "/api/tickets/**").hasAnyRole("ADMIN", "TECHNICIAN")
                                 .requestMatchers(DELETE, "/api/tickets/**").hasRole("ADMIN")

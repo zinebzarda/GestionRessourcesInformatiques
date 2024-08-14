@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UtilisateurService } from '../../../services/utilisateur.service';
-import { Router } from '@angular/router';
+import {UtilisateurService} from "../../../services/utilisateur.service";
+import {UtilisateurDTO} from "../../../models/utilisateur-dto";
 
 @Component({
   selector: 'app-add-utilisateur',
@@ -9,30 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-utilisateur.component.css']
 })
 export class AddUtilisateurComponent implements OnInit {
-  utilisateurForm!: FormGroup;
+  utilisateurForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private utilisateurService: UtilisateurService,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
+    private utilisateurService: UtilisateurService
+  ) {
     this.utilisateurForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       role: ['', Validators.required]
-
     });
   }
 
+  ngOnInit(): void {}
+
   onSubmit(): void {
     if (this.utilisateurForm.valid) {
-      this.utilisateurService.addUtilisateur(this.utilisateurForm.value).subscribe(
+      const newUser: UtilisateurDTO = this.utilisateurForm.value;
+      this.utilisateurService.addUtilisateur(newUser).subscribe(
         response => {
-          window.location.reload();
+          console.log('Utilisateur ajouté avec succès', response);
         },
+        error => {
+          console.error('Erreur lors de l\'ajout de l\'utilisateur', error);
+        }
       );
     }
   }

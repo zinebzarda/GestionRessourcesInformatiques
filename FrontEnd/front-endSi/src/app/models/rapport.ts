@@ -3,10 +3,10 @@ import {TechnicienIT} from "./technicien-it";
 import {AdministrateurIT} from "./administrateur-it";
 
 export interface Rapport {
-  id: number;
+  id?: number;
   type: TypeRapport;
-  dateGeneration: Date;
+  dateGeneration: string;
   contenu: string;
-  administrateurIT: AdministrateurIT;
-  technicienIT: TechnicienIT;
+  administrateurIT: { id: number };
+  technicienIT?: { id: number };
 }

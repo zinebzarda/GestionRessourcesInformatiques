@@ -22,7 +22,6 @@ export class TicketService {
   }
 
   private handleError(error: HttpErrorResponse) {
-
     console.error('An error occurred:', error.message);
     return throwError('Something went wrong; please try again later.');
   }
@@ -38,10 +37,8 @@ export class TicketService {
       );
   }
 
-
   getAllTickets(): Observable<TicketDeSupport[]> {
     const token = this.getToken();
-    console.log('Token:', token);
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -49,11 +46,9 @@ export class TicketService {
       .pipe(
         catchError(this.handleError)
       );
-
-
   }
 
-  getTicketById(id: number): Observable<TicketDeSupport> {
+  getTicketById(id: number | undefined): Observable<TicketDeSupport> {
     const token = this.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
@@ -64,7 +59,7 @@ export class TicketService {
       );
   }
 
-  updateTicket(id: number, ticket: TicketDeSupport): Observable<TicketDeSupport> {
+  updateTicket(id: number | undefined, ticket: TicketDeSupport): Observable<TicketDeSupport> {
     const token = this.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
@@ -75,7 +70,7 @@ export class TicketService {
       );
   }
 
-  deleteTicket(id: number): Observable<void> {
+  deleteTicket(id: number | undefined): Observable<void> {
     const token = this.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`

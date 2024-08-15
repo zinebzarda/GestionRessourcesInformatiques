@@ -22,22 +22,21 @@
     <input id="dateResolution" type="date" formControlName="dateResolution" />
   </div>
 
-  <div>
-    <label for="utilisateur">Utilisateur ID:</label>
-    <input id="utilisateur" formControlName="utilisateur.id" />
+  <div formGroupName="utilisateur">
+    <label for="utilisateurId">Utilisateur ID:</label>
+    <input id="utilisateurId" formControlName="id" />
   </div>
 
-  <div>
-    <label for="technicienIT">Technicien IT ID:</label>
-    <input id="technicienIT" formControlName="technicienIT.id" />
+  <div formGroupName="technicienIT">
+    <label for="technicienITId">Technicien IT ID:</label>
+    <input id="technicienITId" formControlName="id" />
   </div>
 
-  <div>
-    <label for="panne">Panne ID:</label>
-    <input id="panne" formControlName="panne.id" />
+  <div formGroupName="panne">
+    <label for="panneId">Panne ID:</label>
+    <input id="panneId" formControlName="id" />
   </div>
 
-  <!-- Nouveaux champs -->
   <div>
     <label for="nomEquipement">Nom de l'Équipement:</label>
     <input id="nomEquipement" formControlName="nomEquipement" />

@@ -35,7 +35,6 @@ export class AddTicketComponent implements OnInit {
       panne: this.fb.group({
         id: ['']
       }),
-      // Ajoutez les autres attributs ici
       nomEquipement: ['', Validators.required],
       urgence: ['', Validators.required],
       priorite: ['', Validators.required]
@@ -45,6 +44,7 @@ export class AddTicketComponent implements OnInit {
   onSubmit(): void {
     if (this.ticketForm.valid) {
       const ticket: TicketDeSupport = this.ticketForm.value;
+      console.log('Ticket à envoyer:', ticket);
       this.ticketService.addTicket(ticket).subscribe(
         () => {
           console.log('Ticket ajouté avec succès');
@@ -56,4 +56,5 @@ export class AddTicketComponent implements OnInit {
       );
     }
   }
+
 }

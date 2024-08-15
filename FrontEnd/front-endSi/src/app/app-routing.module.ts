@@ -8,6 +8,7 @@ import {EquipementPageComponent} from "./components/equipement/equipement-page/e
 import {UserPageComponent} from "./components/utilisateurs/user-page/user-page.component";
 import {TicketPageComponent} from "./components/tickets/ticket-page/ticket-page.component";
 import {AddTicketComponent} from "./components/tickets/add-ticket/add-ticket.component";
+import {UserTicketPageComponent} from "./components/user/user-ticket-page/user-ticket-page.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'technician-dashboard', component: TechnicianDashboardComponent },
 
   { path: 'user-dashboard', component: UserDashboardComponent, children:[
-      { path: '', component: AddTicketComponent },
+      { path: '', component: UserTicketPageComponent },
     ] },
 
 

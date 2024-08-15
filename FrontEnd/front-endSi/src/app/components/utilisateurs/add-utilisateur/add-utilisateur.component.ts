@@ -30,11 +30,8 @@ export class AddUtilisateurComponent implements OnInit {
       const newUser: UtilisateurDTO = this.utilisateurForm.value;
       this.utilisateurService.addUtilisateur(newUser).subscribe(
         response => {
-          console.log('Utilisateur ajouté avec succès', response);
+          window.location.reload();
         },
-        error => {
-          console.error('Erreur lors de l\'ajout de l\'utilisateur', error);
-        }
       );
     }
   }

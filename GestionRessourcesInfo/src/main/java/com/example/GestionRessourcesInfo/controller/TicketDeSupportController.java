@@ -3,6 +3,7 @@ package com.example.GestionRessourcesInfo.controller;
 import com.example.GestionRessourcesInfo.model.TicketDeSupport;
 import com.example.GestionRessourcesInfo.service.TicketDeSupportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +17,15 @@ public class TicketDeSupportController {
     private TicketDeSupportService ticketDeSupportService;
 
     @PostMapping("/addTicket")
-    public ResponseEntity<TicketDeSupport> creerTicketDeSupport(@RequestBody TicketDeSupport ticketDeSupport) {
-        TicketDeSupport createdTicket = ticketDeSupportService.creerTicketDeSupport(ticketDeSupport);
-        return ResponseEntity.ok(createdTicket);
+    public ResponseEntity<TicketDeSupport> createTicket(@RequestBody TicketDeSupport ticket) {
+        try {
+            TicketDeSupport savedTicket = ticketDeSupportService.creerTicketDeSupport(ticket);
+            return new ResponseEntity<>(savedTicket, HttpStatus.CREATED);
+        } catch (Exception e) {
+            // Log the exception and return an appropriate response
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/afficher")

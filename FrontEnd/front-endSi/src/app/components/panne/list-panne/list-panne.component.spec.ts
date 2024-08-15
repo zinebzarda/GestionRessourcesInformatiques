@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowPanneComponent } from './show-panne.component';
+import { ListPanneComponent } from './list-panne.component';
 
-describe('ShowPanneComponent', () => {
-  let component: ShowPanneComponent;
-  let fixture: ComponentFixture<ShowPanneComponent>;
+describe('ListPanneComponent', () => {
+  let component: ListPanneComponent;
+  let fixture: ComponentFixture<ListPanneComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ShowPanneComponent]
+      declarations: [ListPanneComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ShowPanneComponent);
+    fixture = TestBed.createComponent(ListPanneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

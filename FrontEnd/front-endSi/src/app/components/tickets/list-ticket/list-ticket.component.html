@@ -18,9 +18,9 @@
       <td>{{ ticket.etat }}</td>
       <td>{{ ticket.dateCreation | date:'dd/MM/yyyy HH:mm' }}</td>
       <td>{{ ticket.dateResolution | date:'dd/MM/yyyy HH:mm' }}</td>
-      <td>{{ ticket.utilisateur?.username}}</td>
-      <td>{{ ticket.technicienIT?.username}}</td>
-      <td>{{ ticket.panne?.description}}</td>
+      <td>{{ ticket.utilisateur?.id }}</td>
+      <td>{{ ticket.technicienIT?.id }}</td>
+      <td>{{ ticket.panne.idPanne }}</td>
       <td>
         <button class="delete-btn" (click)="deleteTicket(ticket.id)">Supprimer</button>
         <button class="edit-btn" [routerLink]="['/admin-dashboard/edit-ticket', ticket.id]">Modifier</button>

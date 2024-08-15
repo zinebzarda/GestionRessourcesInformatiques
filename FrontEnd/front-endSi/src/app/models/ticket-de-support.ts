@@ -1,15 +1,12 @@
-import {EtatTicket} from "./enums/etat-ticket";
-import {Utilisateur} from "./utilisateur";
-import {TechnicienIT} from "./technicien-it";
-import {Panne} from "./panne";
+import { EtatTicket } from './enums/etat-ticket';
 
 export interface TicketDeSupport {
-  id: number;
+  id?: number;
   description: string;
-  etat: EtatTicket;
-  dateCreation: Date;
-  dateResolution: Date;
-  utilisateur: Utilisateur;
-  technicienIT: TechnicienIT;
-  panne: Panne;
+  etat?: EtatTicket;
+  dateCreation?: string;
+  dateResolution?: string;
+  utilisateur?: { id: number };
+  technicienIT?: { id: number };
+  panne: { idPanne: number };
 }

@@ -1,9 +1,10 @@
 import {AdministrateurIT} from "./administrateur-it";
 
 export interface Notification {
-  id: number;
+  id?: number;
   message: string;
-  dateEnvoi: Date;
+  dateEnvoi: string;
   lu: boolean;
-  administrateurIT: AdministrateurIT;
+  administrateurIT: { id: number };
 }
+

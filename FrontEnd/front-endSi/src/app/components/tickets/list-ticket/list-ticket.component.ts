@@ -20,11 +20,12 @@ export class ListTicketComponent implements OnInit {
       },
       (error: any) => {
         console.error('Erreur lors de la récupération des tickets:', error);
+        console.log(this.tickets)
       }
     );
   }
 
-  deleteTicket(id: number): void {
+  deleteTicket(id: number | undefined): void {
     this.ticketService.deleteTicket(id).subscribe(
       () => {
         this.tickets = this.tickets.filter(ticket => ticket.id !== id);

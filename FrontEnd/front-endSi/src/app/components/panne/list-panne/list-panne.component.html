@@ -15,7 +15,8 @@
       <td>{{ panne.description }}</td>
       <td>{{ panne.datePanne | date:'dd/MM/yyyy' }}</td>
       <td>{{ panne.resolu ? 'Résolu' : 'Non résolu' }}</td>
-      <td>{{ panne.equipement.id }}</td>
+      <td *ngIf="!panne.equipement">N/A</td>
+      <td *ngIf="panne.equipement">{{ panne.equipement.id }}</td>
       <td>
         <button class="edit-btn" (click)="openEditPopup(panne)">Modifier</button>
         <button class="delete-btn" (click)="deletePanne(panne.id)">Supprimer</button>

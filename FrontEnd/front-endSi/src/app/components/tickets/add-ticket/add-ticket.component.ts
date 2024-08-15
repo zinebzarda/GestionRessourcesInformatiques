@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EtatTicket } from '../../../models/enums/etat-ticket';
 import { TicketService } from '../../../services/ticket.service';
 import { TicketDeSupport } from '../../../models/ticket-de-support';
+import {Panne} from "../../../models/panne";
 
 @Component({
   selector: 'app-add-ticket',
@@ -24,13 +25,9 @@ export class AddTicketComponent implements OnInit {
     this.ticketForm = this.fb.group({
       description: ['', Validators.required],
       etat: ['', Validators.required],
-      dateCreation: [this.formatDate(new Date()), Validators.required],
+      dateCreation: [new Date(), Validators.required],
       dateResolution: ['']
     });
-  }
-
-  formatDate(date: Date): string {
-    return date.toISOString().split('T')[0]; // Formatte la date en 'YYYY-MM-DD'
   }
 
   onSubmit(): void {
@@ -39,14 +36,10 @@ export class AddTicketComponent implements OnInit {
       console.log('Ticket à envoyer:', ticket);
       this.ticketService.addTicket(ticket).subscribe(
         () => {
-          window.location.reload();
+          window.location.reload()
         },
-        (error) => {
-          console.error('Erreur lors de l\'ajout du ticket:', error);
-        }
       );
-    } else {
-      console.error('Formulaire invalide', this.ticketForm);
     }
   }
+
 }

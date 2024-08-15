@@ -22,7 +22,6 @@ public class TicketDeSupportController {
             TicketDeSupport savedTicket = ticketDeSupportService.creerTicketDeSupport(ticket);
             return new ResponseEntity<>(savedTicket, HttpStatus.CREATED);
         } catch (Exception e) {
-            // Log the exception and return an appropriate response
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

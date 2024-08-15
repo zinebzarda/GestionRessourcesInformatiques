@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: '', component: EquipementPageComponent },
       { path: 'User-page', component: UserPageComponent },
       { path: 'Ticket-page', component: TicketPageComponent },
+      { path: 'admin-dashboard/edit-ticket/:id', component: EquipementPageComponent },
 
       ]},
   { path: 'technician-dashboard', component: TechnicianDashboardComponent },
@@ -37,4 +38,4 @@ export class AppRoutingModule { }
 
 
 
- 
+

@@ -9,19 +9,19 @@ import { EquipementService } from "../../../services/equipement.service";
 })
 export class EditEquipementComponent {
   @Input() equipement: Equipement | null = null;
-  @Output() closePopup = new EventEmitter<void>();  // Renamed to avoid duplicate identifier
+  @Output() closePopup = new EventEmitter<void>();
 
   constructor(private equipementService: EquipementService) {}
 
   onSubmit() {
     if (this.equipement) {
       this.equipementService.updateEquipement(this.equipement).subscribe(() => {
-        this.closePopup.emit();  // Emit event to close popup
+        this.closePopup.emit();
       });
     }
   }
 
   closePopupMethod() {
-    this.closePopup.emit();  // Emit event to close popup
+    this.closePopup.emit();
   }
 }

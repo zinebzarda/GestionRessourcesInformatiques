@@ -23,7 +23,8 @@
       <td *ngIf="!ticket.utilisateur">N/A</td>
       <td *ngIf="ticket.technicienIT">{{ticket.technicienIT.id}}</td>
       <td *ngIf="!ticket.technicienIT">N/A</td>
-      <td>{{ticket.panne.description}}</td>
+      <td *ngIf="ticket.panne">{{ticket.panne.description}}</td>
+      <td *ngIf="!ticket.panne">N/A</td>
 
 
       <td>

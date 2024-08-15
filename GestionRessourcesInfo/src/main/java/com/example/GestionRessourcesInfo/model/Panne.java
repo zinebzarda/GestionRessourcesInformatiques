@@ -1,5 +1,6 @@
 package com.example.GestionRessourcesInfo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +26,10 @@ public class Panne {
 
     @ManyToOne
     @JoinColumn(name = "equipement_id")
+    @JsonIgnore
     private Equipement equipement;
 
     @OneToMany(mappedBy = "panne")
+    @JsonIgnore
     private List<TicketDeSupport> tickets;
 }

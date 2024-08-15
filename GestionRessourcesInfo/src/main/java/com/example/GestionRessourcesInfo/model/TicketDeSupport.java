@@ -1,6 +1,7 @@
 package com.example.GestionRessourcesInfo.model;
 
 import com.example.GestionRessourcesInfo.model.enums.EtatTicket;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

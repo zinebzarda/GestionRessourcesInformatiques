@@ -24,21 +24,13 @@ export class AddTicketComponent implements OnInit {
     this.ticketForm = this.fb.group({
       description: ['', Validators.required],
       etat: ['', Validators.required],
-      dateCreation: [new Date(), Validators.required],
-      dateResolution: [''],
-      utilisateur: this.fb.group({
-        id: ['', Validators.required]
-      }),
-      technicienIT: this.fb.group({
-        id: ['']
-      }),
-      panne: this.fb.group({
-        id: ['']
-      }),
-      nomEquipement: ['', Validators.required],
-      urgence: ['', Validators.required],
-      priorite: ['', Validators.required]
+      dateCreation: [this.formatDate(new Date()), Validators.required],
+      dateResolution: ['']
     });
+  }
+
+  formatDate(date: Date): string {
+    return date.toISOString().split('T')[0]; // Formatte la date en 'YYYY-MM-DD'
   }
 
   onSubmit(): void {
@@ -47,14 +39,14 @@ export class AddTicketComponent implements OnInit {
       console.log('Ticket à envoyer:', ticket);
       this.ticketService.addTicket(ticket).subscribe(
         () => {
-          console.log('Ticket ajouté avec succès');
-          this.router.navigate(['/tickets-list']);
+          window.location.reload();
         },
-        (error: any) => {
+        (error) => {
           console.error('Erreur lors de l\'ajout du ticket:', error);
         }
       );
+    } else {
+      console.error('Formulaire invalide', this.ticketForm);
     }
   }
-
 }

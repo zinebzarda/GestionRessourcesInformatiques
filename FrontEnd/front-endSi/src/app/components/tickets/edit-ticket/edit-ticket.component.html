@@ -1,38 +1,26 @@
-<form [formGroup]="ticketForm" (ngSubmit)="updateTicket()">
-  <div>
-    <label>Description:</label>
-    <input formControlName="description" placeholder="Description du ticket">
-  </div>
+<div class="edit-ticket-form">
+  <h2>Modifier le Ticket</h2>
+  <form [formGroup]="editTicketForm" (ngSubmit)="onSubmit()">
+    <label for="description">Description:</label>
+    <input id="description" formControlName="description" type="text" />
 
-  <div>
-    <label>État:</label>
-    <input formControlName="etat" placeholder="État du ticket">
-  </div>
+    <label for="etat">État:</label>
+    <select id="etat" formControlName="etat">
+      <option *ngFor="let etat of etats" [value]="etat">{{ etat }}</option>
+    </select>
 
-  <div>
-    <label>Date de Création:</label>
-    <input formControlName="dateCreation" placeholder="Date de création" type="datetime-local">
-  </div>
+    <label for="dateResolution">Date de Résolution:</label>
+    <input id="dateResolution" formControlName="dateResolution" type="datetime-local" />
 
-  <div>
-    <label>Date de Résolution:</label>
-    <input formControlName="dateResolution" placeholder="Date de résolution" type="datetime-local">
-  </div>
+    <label for="utilisateur">Utilisateur:</label>
+    <input id="utilisateur" formControlName="utilisateur" type="text" />
 
-  <div formGroupName="utilisateur">
-    <label>ID Utilisateur:</label>
-    <input formControlName="id" placeholder="ID de l'utilisateur">
-  </div>
+    <label for="technicienIT">Technicien IT:</label>
+    <input id="technicienIT" formControlName="technicienIT" type="text" />
 
-  <div formGroupName="technicienIT">
-    <label>ID Technicien IT:</label>
-    <input formControlName="id" placeholder="ID du technicien IT">
-  </div>
+    <label for="panne">Panne:</label>
+    <input id="panne" formControlName="panne" type="text" />
 
-  <div formGroupName="panne">
-    <label>ID Panne:</label>
-    <input formControlName="idPanne" placeholder="ID de la panne">
-  </div>
-  <button type="submit" [disabled]="ticketForm.invalid">Enregistrer les modifications</button>
-
-</form>
+    <button type="submit" class="save-btn">Enregistrer</button>
+  </form>
+</div>

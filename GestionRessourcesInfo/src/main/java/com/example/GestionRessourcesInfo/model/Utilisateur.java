@@ -1,6 +1,7 @@
 package com.example.GestionRessourcesInfo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -19,5 +20,6 @@ public class Utilisateur extends Personne {
 
 
     @OneToMany(mappedBy = "utilisateur")
+    @JsonIgnore
     private List<TicketDeSupport> ticketsSupport;
 }

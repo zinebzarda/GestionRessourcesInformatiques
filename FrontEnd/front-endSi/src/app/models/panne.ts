@@ -6,7 +6,7 @@ export interface Panne {
   description: string;
   datePanne: string;
   resolu: boolean;
-  equipement: { idEquipement: number };
-  tickets?: { idTicket: number }[];
+  equipement: Equipement;
+  tickets:TicketDeSupport ;
 }
 

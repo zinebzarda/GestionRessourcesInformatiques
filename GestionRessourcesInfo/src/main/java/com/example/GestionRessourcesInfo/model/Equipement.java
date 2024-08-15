@@ -1,6 +1,7 @@
 package com.example.GestionRessourcesInfo.model;
 
 import com.example.GestionRessourcesInfo.model.enums.EtatEquipement;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class Equipement {
     private Date dateAcquisition;
 
     @OneToMany(mappedBy = "equipement")
+    @JsonIgnore
     private List<Panne> pannes;
 
 }

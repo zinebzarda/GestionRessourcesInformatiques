@@ -17,11 +17,9 @@ export class ListTicketComponent implements OnInit {
 
       (data: TicketDeSupport[]) => {
         this.tickets = data;
-      },
-      (error: any) => {
-        console.error('Erreur lors de la récupération des tickets:', error);
         console.log(this.tickets)
-      }
+      },
+
     );
   }
 
@@ -30,9 +28,7 @@ export class ListTicketComponent implements OnInit {
       () => {
         this.tickets = this.tickets.filter(ticket => ticket.id !== id);
       },
-      (error: any) => {
-        console.error('Erreur lors de la suppression du ticket:', error);
-      }
+
     );
   }
 }

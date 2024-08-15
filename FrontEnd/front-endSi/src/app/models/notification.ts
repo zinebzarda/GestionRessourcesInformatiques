@@ -5,6 +5,6 @@ export interface Notification {
   message: string;
   dateEnvoi: string;
   lu: boolean;
-  administrateurIT: { id: number };
+  administrateurIT: AdministrateurIT;
 }
 

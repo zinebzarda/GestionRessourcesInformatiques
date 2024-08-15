@@ -1,13 +1,8 @@
 
-import {Role} from "./enums/role";
+import {Personne} from "./personne";
 
-export interface AdministrateurIT {
-  id?: number;
-  username: string;
-  email: string;
-  password: string;
-  role?: Role;
-  reports?: { idRapport: number }[];
-  notifications?: { idNotification: number }[];
+export interface AdministrateurIT extends Personne{
+  reports: Report;
+  notifications: Notification;
 }
 

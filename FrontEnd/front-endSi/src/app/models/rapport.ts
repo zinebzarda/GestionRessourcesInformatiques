@@ -7,6 +7,6 @@ export interface Rapport {
   type: TypeRapport;
   dateGeneration: string;
   contenu: string;
-  administrateurIT: { id: number };
-  technicienIT?: { id: number };
+  administrateurIT: AdministrateurIT;
+  technicienIT: TechnicienIT;
 }

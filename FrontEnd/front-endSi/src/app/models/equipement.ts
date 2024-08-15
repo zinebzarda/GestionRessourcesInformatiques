@@ -7,6 +7,6 @@ export interface Equipement {
   description: string;
   etat: EtatEquipement;
   dateAcquisition: string;
-  pannes?: { idPanne: number }[];
+  pannes:Panne;
 }
 

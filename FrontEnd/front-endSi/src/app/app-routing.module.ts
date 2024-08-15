@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: '', component: EquipementPageComponent },
       { path: 'User-page', component: UserPageComponent },
       { path: 'Ticket-page', component: TicketPageComponent },
+
       ]},
   { path: 'technician-dashboard', component: TechnicianDashboardComponent },
 
@@ -33,3 +34,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+
+ 

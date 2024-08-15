@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {TicketService} from "../../../services/ticket.service";
 import {TicketDeSupport} from "../../../models/ticket-de-support";
+import {EtatTicket} from "../../../models/enums/etat-ticket";
+import {TicketService} from "../../../services/ticket.service";
 
 @Component({
   selector: 'app-edit-ticket',
@@ -10,59 +11,53 @@ import {TicketDeSupport} from "../../../models/ticket-de-support";
   styleUrls: ['./edit-ticket.component.css']
 })
 export class EditTicketComponent implements OnInit {
-  ticketId!: number;
-  ticketForm!: FormGroup;
+  editTicketForm: FormGroup;
+  ticket: TicketDeSupport | undefined;
+  etats = Object.values(EtatTicket);
 
   constructor(
     private fb: FormBuilder,
-    private ticketService: TicketService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ticketService: TicketService
   ) {
-    this.ticketForm = this.fb.group({
-      description: ['', Validators.required],
+    this.editTicketForm = this.fb.group({
+      description: [''],
       etat: [''],
-      utilisateur: this.fb.group({
-        id: ['', Validators.required],
-      }),
-      technicienIT: this.fb.group({
-        id: ['', Validators.required],
-      }),
-      panne: this.fb.group({
-        idPanne: ['', Validators.required],
-      }),
-      dateCreation: [''],
-      dateResolution: ['']
+      dateResolution: [''],
+      utilisateur: [''],
+      technicienIT: [''],
+      panne: ['']
     });
   }
 
   ngOnInit(): void {
-    this.ticketId = +this.route.snapshot.paramMap.get('id')!;
-    this.loadTicket();
+    const ticketId = this.route.snapshot.paramMap.get('id');
+    if (ticketId) {
+      this.ticketService.getTicketById(Number(ticketId)).subscribe((data: TicketDeSupport) => {
+        this.ticket = data;
+        this.editTicketForm.patchValue({
+          description: data.description,
+          etat: data.etat,
+          dateResolution: data.dateResolution,
+          utilisateur: data.utilisateur.id,
+          technicienIT: data.technicienIT.id,
+          panne: data.panne.description
+        });
+      });
+    }
   }
 
-  loadTicket(): void {
-    this.ticketService.getTicketById(this.ticketId).subscribe(
-      (ticket: TicketDeSupport) => {
-        this.ticketForm.patchValue(ticket);
-      },
-      (error) => {
-        console.error('Erreur lors du chargement du ticket', error);
-      }
-    );
-  }
+  onSubmit(): void {
+    if (this.ticket) {
+      const updatedTicket: TicketDeSupport = {
+        ...this.ticket,
+        ...this.editTicketForm.value
+      };
 
-  updateTicket(): void {
-    if (this.ticketForm.valid) {
-      this.ticketService.updateTicket(this.ticketId, this.ticketForm.value).subscribe(
-        () => {
-          console.log('Ticket mis à jour avec succès');
-          this.router.navigate(['/tickets']);
-        },
-        (error) => {
-          console.error('Erreur lors de la mise à jour du ticket', error);
-        }
-      );
+      this.ticketService.updateTicket(this.ticket.id, updatedTicket).subscribe(() => {
+        this.router.navigate(['/admin-dashboard/Ticket-page']);
+      });
     }
   }
 }

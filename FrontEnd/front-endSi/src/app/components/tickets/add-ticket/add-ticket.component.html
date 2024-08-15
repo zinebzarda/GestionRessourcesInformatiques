@@ -1,56 +1,42 @@
-<h2>Ajouter un Ticket</h2>
-<form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="description">Description:</label>
-    <input id="description" formControlName="description" />
+<div class="reminders">
+  <div class="header">
+    <i class="icon-plus"></i>
+    <h3>Ajouter un Ticket</h3>
   </div>
+  <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="add-equipment-form">
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input id="description" formControlName="description" />
+      <div *ngIf="ticketForm.controls['description'].invalid && ticketForm.controls['description'].touched">
+        <small class="error-text">La description est requise.</small>
+      </div>
+    </div>
 
-  <div>
-    <label for="etat">État:</label>
-    <select id="etat" formControlName="etat">
-      <option *ngFor="let etat of etatOptions" [value]="etat">{{ etat }}</option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="etat">État:</label>
+      <select id="etat" formControlName="etat">
+        <option *ngFor="let etat of etatOptions" [value]="etat">{{ etat }}</option>
+      </select>
+      <div *ngIf="ticketForm.controls['etat'].invalid && ticketForm.controls['etat'].touched">
+        <small class="error-text">L'état est requis.</small>
+      </div>
+    </div>
 
-  <div>
-    <label for="dateCreation">Date de Création:</label>
-    <input id="dateCreation" type="date" formControlName="dateCreation" />
-  </div>
+    <div class="form-group">
+      <label for="dateCreation">Date de Création:</label>
+      <input id="dateCreation" type="date" formControlName="dateCreation" />
+      <div *ngIf="ticketForm.controls['dateCreation'].invalid && ticketForm.controls['dateCreation'].touched">
+        <small class="error-text">La date de création est requise.</small>
+      </div>
+    </div>
 
-  <div>
-    <label for="dateResolution">Date de Résolution:</label>
-    <input id="dateResolution" type="date" formControlName="dateResolution" />
-  </div>
+    <div class="form-group">
+      <label for="dateResolution">Date de Résolution:</label>
+      <input id="dateResolution" type="date" formControlName="dateResolution" />
+    </div>
 
-  <div formGroupName="utilisateur">
-    <label for="utilisateurId">Utilisateur ID:</label>
-    <input id="utilisateurId" formControlName="id" />
-  </div>
-
-  <div formGroupName="technicienIT">
-    <label for="technicienITId">Technicien IT ID:</label>
-    <input id="technicienITId" formControlName="id" />
-  </div>
-
-  <div formGroupName="panne">
-    <label for="panneId">Panne ID:</label>
-    <input id="panneId" formControlName="id" />
-  </div>
-
-  <div>
-    <label for="nomEquipement">Nom de l'Équipement:</label>
-    <input id="nomEquipement" formControlName="nomEquipement" />
-  </div>
-
-  <div>
-    <label for="urgence">Urgence:</label>
-    <input id="urgence" formControlName="urgence" />
-  </div>
-
-  <div>
-    <label for="priorite">Priorité:</label>
-    <input id="priorite" formControlName="priorite" />
-  </div>
-
-  <button type="submit" [disabled]="ticketForm.invalid">Ajouter Ticket</button>
-</form>
+    <div class="form-actions">
+      <button type="submit" [disabled]="ticketForm.invalid">Ajouter Ticket</button>
+    </div>
+  </form>
+</div>

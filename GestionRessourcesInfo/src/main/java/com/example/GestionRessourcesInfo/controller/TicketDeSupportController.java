@@ -31,7 +31,6 @@ public class TicketDeSupportController {
     @GetMapping("/afficher")
     public ResponseEntity<List<TicketDeSupport>> getAllTicketsDeSupport() {
         List<TicketDeSupport> tickets = ticketDeSupportService.getAllTicketsDeSupport();
-        System.out.println("////////////////////////////////////////////////////");
         return ResponseEntity.ok(tickets);
     }
 

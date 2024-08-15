@@ -1,8 +1,8 @@
 // src/app/components/list-pannes/list-pannes.component.ts
 
 import { Component } from '@angular/core';
-import {Panne} from "../../../models/panne";
-import {PanneService} from "../../../services/panne.service";
+import { Panne } from '../../../models/panne';
+import { PanneService } from '../../../services/panne.service';
 
 @Component({
   selector: 'app-list-panne',
@@ -40,6 +40,5 @@ export class ListPanneComponent {
   closeEditPopup() {
     this.showEditPopup = false;
     this.selectedPanne = null;
-    this.loadPannes();
   }
 }

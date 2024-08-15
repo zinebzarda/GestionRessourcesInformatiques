@@ -1,1 +1,28 @@
-<p>list-panne works!</p>
+<div class="scrollable-table-container">
+
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Description</th>
+      <th>Date de la panne</th>
+      <th>État</th>
+      <th>Équipement</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let panne of pannes">
+      <td>{{ panne.description }}</td>
+      <td>{{ panne.datePanne | date:'dd/MM/yyyy' }}</td>
+      <td>{{ panne.resolu ? 'Résolu' : 'Non résolu' }}</td>
+      <td>{{ panne.equipement.id }}</td>
+      <td>
+        <button class="edit-btn" (click)="openEditPopup(panne)">Modifier</button>
+        <button class="delete-btn" (click)="deletePanne(panne.id)">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <app-edit-panne *ngIf="showEditPopup" [panne]="selectedPanne" (closePopup)="closeEditPopup()"></app-edit-panne>
+</div>

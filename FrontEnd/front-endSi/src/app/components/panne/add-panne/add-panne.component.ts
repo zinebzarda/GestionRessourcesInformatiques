@@ -26,6 +26,7 @@ export class AddPanneComponent implements OnInit{
   onSubmit() {
     const panne:Panne=this.panneForm.value;
     this.panneService.createPanne(panne).subscribe(() => {
+      window.location.reload()
     });
   }
 }

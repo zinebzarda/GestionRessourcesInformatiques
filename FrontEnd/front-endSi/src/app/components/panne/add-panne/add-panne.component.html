@@ -1,34 +1,39 @@
- <form [formGroup]="panneForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" id="description" formControlName="description" class="form-control" placeholder="Enter panne description">
-    </div>
+<form [formGroup]="panneForm" (ngSubmit)="onSubmit()" class="reminders add-equipment-form">
+  <div class="header">
+    <i class="icon-class"></i> <!-- Replace with your icon class -->
+    <h3>Ajouter une Panne</h3>
+  </div>
 
-    <div class="form-group">
-      <label for="datePanne">Date de la Panne</label>
-      <input type="date" id="datePanne" formControlName="datePanne" class="form-control">
-    </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" id="description" formControlName="description" class="form-control" placeholder="Enter panne description">
+  </div>
 
-    <div class="form-group">
-      <label for="resolu">Résolu</label>
-      <select id="resolu" formControlName="resolu" class="form-control">
-        <option value="">Sélectionnez un état</option>
-        <option value="true">Oui</option>
-        <option value="false">Non</option>
-      </select>
-    </div>
+  <div class="form-group">
+    <label for="datePanne">Date de la Panne</label>
+    <input type="date" id="datePanne" formControlName="datePanne" class="form-control">
+  </div>
 
-    <div class="form-group">
-      <label for="equipement">Équipement</label>
-      <input type="text" id="equipement" formControlName="equipement" class="form-control" placeholder="Enter equipment ID">
-    </div>
+  <div class="form-group">
+    <label for="resolu">Résolu</label>
+    <select id="resolu" formControlName="resolu" class="form-control">
+      <option value="">Sélectionnez un état</option>
+      <option value="true">Oui</option>
+      <option value="false">Non</option>
+    </select>
+  </div>
 
-    <div class="form-group">
-      <label for="tickets">Tickets de Support</label>
-      <input type="text" id="tickets" formControlName="tickets" class="form-control" placeholder="Enter ticket IDs">
-    </div>
+  <div class="form-group">
+    <label for="equipement">Équipement</label>
+    <input type="text" id="equipement" formControlName="equipement" class="form-control" placeholder="Enter equipment ID">
+  </div>
 
+  <div class="form-group">
+    <label for="tickets">Tickets de Support</label>
+    <input type="text" id="tickets" formControlName="tickets" class="form-control" placeholder="Enter ticket IDs">
+  </div>
+
+  <div class="form-actions">
     <button type="submit" class="btn btn-primary">Ajouter la Panne</button>
-  </form>
-
-
+  </div>
+</form>

@@ -1,1 +1,27 @@
-<p>edit-panne works!</p>
+<!-- src/app/components/edit-panne/edit-panne.component.html -->
+
+<div class="popup" *ngIf="panne">
+  <div class="popup-content">
+    <h2>Modifier Panne</h2>
+    <form (ngSubmit)="onSubmit()" #editForm="ngForm">
+      <div>
+        <label for="description">Description:</label>
+        <input type="text" id="description" [(ngModel)]="panne.description" name="description" required>
+      </div>
+      <div>
+        <label for="datePanne">Date de la panne:</label>
+        <input type="date" id="datePanne" [(ngModel)]="panne.datePanne" name="datePanne" required>
+      </div>
+      <div>
+        <label for="resolu">Résolu:</label>
+        <input type="checkbox" id="resolu" [(ngModel)]="panne.resolu" name="resolu">
+      </div>
+      <div>
+        <label for="equipement">Équipement:</label>
+        <input type="number" id="equipement" [(ngModel)]="panne.equipement.id" name="equipement" required>
+      </div>
+      <button type="submit">Enregistrer</button>
+      <button type="button" (click)="closePopupMethod()">Annuler</button>
+    </form>
+  </div>
+</div>

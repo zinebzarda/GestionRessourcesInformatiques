@@ -48,6 +48,7 @@ export class EditTicketComponent implements OnInit {
     }
   }
 
+
   onSubmit(): void {
     if (this.ticket) {
       const updatedTicket: TicketDeSupport = {

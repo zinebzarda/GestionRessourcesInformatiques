@@ -7,28 +7,27 @@ import { UserDashboardComponent } from './components/user/user-dashboard/user-da
 import {EquipementPageComponent} from "./components/equipement/equipement-page/equipement-page.component";
 import {UserPageComponent} from "./components/utilisateurs/user-page/user-page.component";
 import {TicketPageComponent} from "./components/tickets/ticket-page/ticket-page.component";
-import {AddTicketComponent} from "./components/tickets/add-ticket/add-ticket.component";
 import {UserTicketPageComponent} from "./components/user/user-ticket-page/user-ticket-page.component";
+import {EditTicketComponent} from "./components/tickets/edit-ticket/edit-ticket.component";
+import {PannePageComponent} from "./components/panne/panne-page/panne-page.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 
-  { path: 'admin-dashboard', component: AdminDashboardComponent, children:[
+  { path: 'admin-dashboard', component: AdminDashboardComponent, children: [
       { path: '', component: EquipementPageComponent },
       { path: 'User-page', component: UserPageComponent },
       { path: 'Ticket-page', component: TicketPageComponent },
-      { path: 'admin-dashboard/edit-ticket/:id', component: EquipementPageComponent },
-
-      ]},
+      { path: 'panne-page', component: PannePageComponent },
+      { path: 'edit-ticket/:id', component: EditTicketComponent }
+    ]},
   { path: 'technician-dashboard', component: TechnicianDashboardComponent },
-
-  { path: 'user-dashboard', component: UserDashboardComponent, children:[
-      { path: '', component: UserTicketPageComponent },
-    ] },
-
-
+  { path: 'user-dashboard', component: UserDashboardComponent, children: [
+      { path: '', component: UserTicketPageComponent }
+    ]},
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

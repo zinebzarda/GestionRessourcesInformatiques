@@ -13,35 +13,30 @@ export class PanneService {
 
   constructor(private http: HttpClient) {}
 
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
   getAllPannes(): Observable<Panne[]> {
-    return this.http.get<Panne[]>(this.apiUrl);
+    return this.http.get<Panne[]>(this.apiUrl, { headers: this.getAuthHeaders() });
   }
 
   getPanneById(id: number): Observable<Panne> {
-    return this.http.get<Panne>(`${this.apiUrl}/${id}`);
+    return this.http.get<Panne>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() });
   }
 
   createPanne(panne: Panne): Observable<Panne> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.post<Panne>(`${this.apiUrl}/addPanne`, panne, { headers });
+    return this.http.post<Panne>(`${this.apiUrl}/addPanne`, panne, { headers: this.getAuthHeaders() });
   }
 
   updatePanne(panne: Panne): Observable<Panne> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.put<Panne>(`${this.apiUrl}/edit/${panne.id}`, panne, { headers });
+    return this.http.put<Panne>(`${this.apiUrl}/edit/${panne.id}`, panne, { headers: this.getAuthHeaders() });
   }
 
   deletePanne(id: number): Observable<void> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`, { headers });
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`, { headers: this.getAuthHeaders() });
   }
 }

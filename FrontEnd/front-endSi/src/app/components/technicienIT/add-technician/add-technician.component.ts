@@ -26,6 +26,7 @@ export class AddTechnicianComponent implements OnInit{
   onSubmit() {
     const technicien:TechnicienIT=this.technicienForm.value;
     this.technicienITService.createTechnicien(technicien).subscribe(() => {
+      window.location.reload()
     });
   }
 }
